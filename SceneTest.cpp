@@ -10,7 +10,7 @@ void SceneTest::Init()
 	// スプライト画像の読込
 	this->sp0.Load_image("tama_g.png");
 	// スプライトの初期位置設定
-	this->sp0.Set_pos(1280 / 2 - 24, 720 / 2 -24);
+	this->sp0.Set_pos(430,200);
 }
 
 /// <summary>
@@ -19,7 +19,7 @@ void SceneTest::Init()
 void SceneTest::Input()
 {
 	// キー状態読込（一括）
-	this->key_state.Read();
+	//this->key_state.Read();
 }
 
 /// <summary>

@@ -70,9 +70,15 @@ public:
 	void Draw() override
 	{
 		// ‰æ‘œ•`‰æ
-		DrawGraph(this->pos_x, this->pos_y, this->image_hnd, true);	
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 150);
+		DrawFillBox(this->pos_x, this->pos_y,this->pos_x+400, this->pos_y+400, GetColor(0,200,0));	
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 
+	void DrawL()
+	{
+
+	}
 
 	void DrawUI()
 	{
@@ -80,5 +86,7 @@ public:
 
 
 	}
+
+	
 
 };
