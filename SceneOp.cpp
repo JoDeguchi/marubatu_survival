@@ -4,8 +4,7 @@
 
 void SceneOp::Init()
 {
-	// 背景画像の読込
-	this->bg0.Load_image("op.png");
+	
 }
 
 /// <summary>
@@ -42,11 +41,22 @@ void SceneOp::Draw()
 	this->bg0.Draw();
 
 	// メッセージを描画
+	DrawString(600, 100, "〇×サバイバル", GetColor(255, 255, 255));
+	DrawString(500, 300, "オフライン対戦", GetColor(255, 255, 255));
+	DrawString(500, 330, "コンピューター対戦（むずかしさ）", GetColor(255, 255, 255));
+	DrawString(500, 370, "ふつう", GetColor(255, 255, 255));
+	DrawString(500, 390, "むずかしい", GetColor(255, 255, 255));
+	DrawString(500, 410, "げきむず", GetColor(255, 255, 255));
+	DrawString(900, 600, "あそびかた", GetColor(255, 255, 255));
+
+	
+/*
 	if ((this->update_cnt / 40) % 2 == 0)
 	{
 		SetFontSize(32);
 		DrawString(522, 602, "Press Any Key!!", GetColor(220, 220, 220));
 		DrawString(520, 600, "Press Any Key!!", GetColor(255, 0, 0));
 	}
+*/
 }
 

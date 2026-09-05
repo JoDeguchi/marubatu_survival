@@ -25,6 +25,8 @@ protected:
 	int pos_y = 0;
 	//UI1
 	int pos_y2 = 50;
+	//UI2
+	int pos_y3 = 50;
 
 public:
 
@@ -84,9 +86,18 @@ public:
 	//UI描画
 	void DrawUI()
 	{
-
-		DrawBox(pos_x2, pos_y2, pos_x2 + 200, pos_y2 + 100, GetColor(255, 0, 0), true);
+		//UI1
+		DrawBox(pos_x2, pos_y2, pos_x2 + 250, pos_y2 + 100, GetColor(255, 0, 0), true);
+		//文字列の描画
+		DrawString(pos_x2+5 , pos_y2 + 30, "プレイヤー1", GetColor(255, 255, 255));
 		
+		
+		//UI2
+		DrawBox(pos_x3, pos_y3, pos_x3 + 250, pos_y3 + 100, GetColor(255, 0, 0), true);
+		//文字列の描画
+		DrawString(pos_x3 + 5, pos_y3 + 30, "プレイヤー２", GetColor(255, 255, 255));
+
+
 
 
 	}
