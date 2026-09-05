@@ -47,6 +47,9 @@ void SceneOp::Draw()
 	DrawString(500, 370, "‚Ó‚Â‚¤", GetColor(255, 255, 255));
 	DrawString(500, 390, "‚Ş‚¸‚©‚µ‚¢", GetColor(255, 255, 255));
 	DrawString(500, 410, "‚°‚«‚Ş‚¸", GetColor(255, 255, 255));
+	DrawString(900, 600, "‚ ‚»‚Ñ‚©‚½", GetColor(255, 255, 255));
+
+	
 /*
 	if ((this->update_cnt / 40) % 2 == 0)
 	{
