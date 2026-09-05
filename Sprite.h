@@ -92,10 +92,13 @@ public:
 	//UI•`‰æ
 	void DrawUI()
 	{
-
+		//UI1
 		DrawBox(pos_x2, pos_y2, pos_x2 + 200, pos_y2 + 100, GetColor(255, 0, 0), true);
-
+		
+		//UI2
 		DrawBox(pos_x3, pos_y3, pos_x3 + 200, pos_y3 + 100, GetColor(255, 0, 0), true);
+
+
 
 
 	}
