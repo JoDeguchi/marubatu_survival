@@ -14,13 +14,19 @@ protected:
 	/// 横表示位置
 	/// </summary>
 	int pos_x = 0;
-	int pos_x2 = 250;
+	///UI1
+	int pos_x2 = 100;
+	//UI2
+	int pos_x3 = 1000;
 
 	/// <summary>
 	/// 縦表示位置
 	/// </summary>
 	int pos_y = 0;
+	//UI1
 	int pos_y2 = 50;
+	//UI2
+	int pos_y3 = 50;
 
 public:
 
@@ -88,7 +94,8 @@ public:
 	{
 
 		DrawBox(pos_x2, pos_y2, pos_x2 + 200, pos_y2 + 100, GetColor(255, 0, 0), true);
-		
+
+		DrawBox(pos_x3, pos_y3, pos_x3 + 200, pos_y3 + 100, GetColor(255, 0, 0), true);
 
 
 	}
