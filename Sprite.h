@@ -14,7 +14,7 @@ protected:
 	/// ‰¡•\Ž¦ˆÊ’u
 	/// </summary>
 	int pos_x = 0;
-	///UI1
+	
 	int pos_x2 = 100;
 	//UI2
 	int pos_x3 = 1000;
