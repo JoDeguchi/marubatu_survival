@@ -5,6 +5,7 @@
 #include "Background.h"		// 背景クラス
 #include "Sprite.h"			// スプライトクラス
 #include "KeyReader.h"		// キーリーダー
+#include "Line.h"
 
 /// <summary>
 /// テスト（シーン）
@@ -27,11 +28,10 @@ class SceneTest : public SceneBase
 	// スプライトクラスのインスタンス
 	Sprite sp0;
 
+	Line line_w[2];
+	Line line_h[2];
 
-	//	変えたところ
-	int line = 0;
 
-	int line2 = 0;
 
 public:
 

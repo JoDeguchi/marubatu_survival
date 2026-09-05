@@ -21,6 +21,15 @@ protected:
 	/// </summary>
 	int pos_y = 0;
 	int pos_y2 = 50;
+	
+	//	線の座標
+	int line_x = 0;
+	int line_y = 0;
+
+	//	線の座標終端
+	int line_x2 = 0;
+	int line_y2 = 0;
+
 
 public:
 
@@ -52,6 +61,16 @@ public:
 		this->pos_y = arg_y;
 	}
 
+	void Line_pos(int arg_x, int arg_y, int arg_x2, int arg_y2)
+	{
+		// 線の座標の登録
+		this->line_x = arg_x;
+		this->line_y = arg_y;
+		// 線の座標終端の登録
+		this->line_x2 = arg_x2;
+		this->line_y2 = arg_y2;
+	}	
+
 	/// <summary>
 	/// 移動
 	/// </summary>
@@ -66,31 +85,23 @@ public:
 	}
 
 	/// <summary>
-	/// 画像を描画
+	///	盤面描画
 	/// 　透過あり
 	/// </summary>
 	void Draw() override
 	{
-		// 画像描画
+		// 盤面描画
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 150);
 		DrawFillBox(this->pos_x, this->pos_y,this->pos_x+400, this->pos_y+400, GetColor(0,200,0));	
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
-	}
-
-	void DrawL()
-	{
-
 	}
 
 
 	//UI描画
 	void DrawUI()
 	{
-
 		DrawBox(pos_x2, pos_y2, pos_x2 + 200, pos_y2 + 100, GetColor(255, 0, 0), true);
 		
-
-
 	}
 
 	
