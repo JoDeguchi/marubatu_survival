@@ -25,7 +25,7 @@ void SceneEd::Draw()
 
 	SetFontSize(64);
 	DrawString(500, 100, "○○の勝ち", GetColor(255, 255, 255));
-	DrawString(600, 100, "タイトルに戻る", GetColor(255, 255, 255));
-	DrawString(600, 100, "ゲーム終了", GetColor(255, 255, 255));
+	DrawString(300, 300, "タイトルに戻る", GetColor(255, 255, 255));
+	DrawString(300, 400, "ゲーム終了", GetColor(255, 255, 255));
 
 }
