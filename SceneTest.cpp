@@ -26,7 +26,7 @@ void SceneTest::Init()
 void SceneTest::Input()
 {
 	// キー状態読込（一括）
-	//this->key_state.Read();
+	this->key_state.Read();
 }
 
 /// <summary>

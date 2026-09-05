@@ -97,11 +97,5 @@ public:
 		//•¶š—ñ‚Ì•`‰æ
 		DrawString(pos_x3 + 5, pos_y3 + 30, "ƒvƒŒƒCƒ„[‚Q", GetColor(255, 255, 255));
 
-
-
-
 	}
-
-	
-
 };
