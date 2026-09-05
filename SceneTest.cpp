@@ -4,20 +4,12 @@
 
 void SceneTest::Init()
 {
-	// 背景画像の読込
-	this->bg0.Load_image("bg.png");
+	
 
 	// スプライト画像の読込
 	this->sp0.Load_image("tama_g.png");
 	// スプライトの初期位置設定
 	this->sp0.Set_pos(430,200);
-
-	////	線の初期位置設定
-	//for(int i = 0; i < 2; i++)
-	//{
-	//	line_w[i].SetLinePos(430, 150 + i * 50, 830, 150 + i * 100);
-	//	line_h[i].SetLinePos(430 + i * 50, 250, 430 + i * 50, 600);
-	//}
 
 	//	横線
 	line_w[0].SetLinePos(430, 330, 830, 330);

@@ -14,22 +14,17 @@ protected:
 	/// â°ï\é¶à íu
 	/// </summary>
 	int pos_x = 0;
-	int pos_x2 = 250;
+	///UI1
+	int pos_x2 = 100;
+	//UI2
+	int pos_x3 = 1000;
 
 	/// <summary>
 	/// ècï\é¶à íu
 	/// </summary>
 	int pos_y = 0;
+	//UI1
 	int pos_y2 = 50;
-	
-	//	ê¸ÇÃç¿ïW
-	int line_x = 0;
-	int line_y = 0;
-
-	//	ê¸ÇÃç¿ïWèIí[
-	int line_x2 = 0;
-	int line_y2 = 0;
-
 
 public:
 
@@ -60,17 +55,6 @@ public:
 		// ècç¿ïWÇÃìoò^
 		this->pos_y = arg_y;
 	}
-
-	void Line_pos(int arg_x, int arg_y, int arg_x2, int arg_y2)
-	{
-		// ê¸ÇÃç¿ïWÇÃìoò^
-		this->line_x = arg_x;
-		this->line_y = arg_y;
-		// ê¸ÇÃç¿ïWèIí[ÇÃìoò^
-		this->line_x2 = arg_x2;
-		this->line_y2 = arg_y2;
-	}	
-
 	/// <summary>
 	/// à⁄ìÆ
 	/// </summary>
@@ -100,8 +84,11 @@ public:
 	//UIï`âÊ
 	void DrawUI()
 	{
+
 		DrawBox(pos_x2, pos_y2, pos_x2 + 200, pos_y2 + 100, GetColor(255, 0, 0), true);
 		
+
+
 	}
 
 	
