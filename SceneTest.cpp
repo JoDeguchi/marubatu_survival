@@ -4,8 +4,7 @@
 
 void SceneTest::Init()
 {
-	// ”wŒi‰æ‘œ‚Ì“Çž
-	this->bg0.Load_image("bg.png");
+	
 
 	// ƒXƒvƒ‰ƒCƒg‰æ‘œ‚Ì“Çž
 	this->sp0.Load_image("tama_g.png");
