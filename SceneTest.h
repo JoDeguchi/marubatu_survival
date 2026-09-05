@@ -31,6 +31,9 @@ class SceneTest : public SceneBase
 	Line line_w[2];
 	Line line_h[2];
 
+	
+	int pos_x = 0;
+	int pos_y = 0;
 
 
 public:
@@ -64,7 +67,7 @@ public:
 	/// •`‰æˆ—
 	/// </summary>
 	void Draw() override;
-
+	
 	/// <summary>
 	/// ‰¹ºÄ¶ˆ—
 	/// </summary>
