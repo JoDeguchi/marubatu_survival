@@ -31,6 +31,8 @@ class SceneTest : public SceneBase
 	//	•Ï‚¦‚½‚Æ‚±‚ë
 	int line = 0;
 
+	int line2 = 0;
+
 public:
 
 	/// <summary>
