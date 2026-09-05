@@ -5,7 +5,7 @@
 void SceneTest::Init()
 {
 	// スプライト画像の読込
-	this->sp0.Load_image("");
+	this->sp0 = Sprite("data/circle.png", 430, 200);
 	// スプライトの初期位置設定
 	this->sp0.Set_pos(430,200);
 
@@ -17,13 +17,9 @@ void SceneTest::Init()
 	line_h[1].SetLinePos(700, 200, 700, 600);
 
 	//	丸とバツの初期位置設定
-	maru.Load_image("data/circle.png");
-	maru.Set_pos(430, 200);
 
 
 	//batu.Set_pos(700, 200);
-
-
 }
 
 /// <summary>
@@ -60,7 +56,7 @@ void SceneTest::Draw()
 	this->sp0.Draw();
 
 	//	UI描画
-	this->sp0.DrawUI();
+	//this->sp0.DrawUI();
 
 	//	線の描画	
 	for(int i = 0; i < 2; i++)
@@ -70,8 +66,10 @@ void SceneTest::Draw()
 	}
 	
 	//	丸とバツの描画
-	maru.Draw();
+	//maru.Draw();
 	//batu.Draw();
+
+	sp0.DrawSprite();
 }
 
 /// <summary>

@@ -14,19 +14,19 @@ protected:
 	/// 横表示位置
 	/// </summary>
 	int pos_x = 0;
-	///UI1
-	int pos_x2 = 100;
-	//UI2
-	int pos_x3 = 1000;
+	/////UI1
+	//int pos_x2 = 100;
+	////UI2
+	//int pos_x3 = 1000;
 
 	/// <summary>
 	/// 縦表示位置
 	/// </summary>
 	int pos_y = 0;
-	//UI1
-	int pos_y2 = 50;
-	//UI2
-	int pos_y3 = 50;
+	////UI1
+	//int pos_y2 = 50;
+	////UI2
+	//int pos_y3 = 50;
 
 public:
 
@@ -39,10 +39,15 @@ public:
 	/// コンストラクター
 	/// </summary>
 	/// <param name="arg_file_path">初期画像ファイルパス</param>
-	Sprite(std::string arg_file_path)
+	Sprite(std::string arg_file_path, int arg_x, int arg_y)
 	{
 		// 画像ファイルの読み込み
 		this->Load_image(arg_file_path);
+
+		// 横座標の登録
+		this->pos_x = arg_x;
+		// 縦座標の登録
+		this->pos_y = arg_y;
 	}
 
 	/// <summary>
@@ -82,20 +87,26 @@ public:
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 
-
-	//UI描画
-	void DrawUI()
+	void DrawSprite()
 	{
-		//UI1
-		DrawBox(pos_x2, pos_y2, pos_x2 + 250, pos_y2 + 100, GetColor(255, 0, 0), true);
-		//文字列の描画
-		DrawString(pos_x2+5 , pos_y2 + 30, "プレイヤー1", GetColor(255, 255, 255));
-		
-		
-		//UI2
-		DrawBox(pos_x3, pos_y3, pos_x3 + 250, pos_y3 + 100, GetColor(255, 0, 0), true);
-		//文字列の描画
-		DrawString(pos_x3 + 5, pos_y3 + 30, "プレイヤー２", GetColor(255, 255, 255));
-
+		// スプライト描画
+		DrawGraph(this->pos_x, this->pos_y, this->image_hnd, true);
 	}
+
+
+	////UI描画
+	//void DrawUI()
+	//{
+	//	//UI1
+	//	DrawBox(pos_x2, pos_y2, pos_x2 + 250, pos_y2 + 100, GetColor(255, 0, 0), true);
+	//	//文字列の描画
+	//	DrawString(pos_x2+5 , pos_y2 + 30, "プレイヤー1", GetColor(255, 255, 255));
+	//	
+	//	
+	//	//UI2
+	//	DrawBox(pos_x3, pos_y3, pos_x3 + 250, pos_y3 + 100, GetColor(255, 0, 0), true);
+	//	//文字列の描画
+	//	DrawString(pos_x3 + 5, pos_y3 + 30, "プレイヤー２", GetColor(255, 255, 255));
+
+	//}
 };

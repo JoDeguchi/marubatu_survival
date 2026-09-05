@@ -34,7 +34,7 @@ class SceneTest : public SceneBase
 	Line line_h[2];
 
 	//	丸とバツのインスタンス
-	Maru maru;
+	//Maru maru;
 	//Batu batu;	
 
 	
