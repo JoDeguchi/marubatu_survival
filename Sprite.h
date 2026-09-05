@@ -73,4 +73,12 @@ public:
 		DrawGraph(this->pos_x, this->pos_y, this->image_hnd, true);	
 	}
 
+
+	void DrawUI()
+	{
+
+
+
+	}
+
 };
