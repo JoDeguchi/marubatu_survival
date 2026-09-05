@@ -27,6 +27,10 @@ class SceneTest : public SceneBase
 	// スプライトクラスのインスタンス
 	Sprite sp0;
 
+
+	//	変えたところ
+	int line = 0;
+
 public:
 
 	/// <summary>
