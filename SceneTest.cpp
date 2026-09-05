@@ -34,24 +34,6 @@ void SceneTest::Input()
 /// </summary>
 void SceneTest::Update()
 {
-	// スプライトを動かす
-	if(this->key_state.CheckKey(KEY_INPUT_LEFT))
-	{
-		this->sp0.Move(-1, 0);
-	}
-	if(this->key_state.CheckKey(KEY_INPUT_RIGHT))
-	{
-		this->sp0.Move(1, 0);
-	}
-	if(this->key_state.CheckKey(KEY_INPUT_UP))
-	{
-		this->sp0.Move(0, -1);
-	}
-	if(this->key_state.CheckKey(KEY_INPUT_DOWN))
-	{
-		this->sp0.Move(0, 1);
-	}
-
 	// ESCキーで終了
 	if (this->key_state.CheckKey(KEY_INPUT_ESCAPE))
 	{
