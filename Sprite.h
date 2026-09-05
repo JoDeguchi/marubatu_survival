@@ -14,11 +14,13 @@ protected:
 	/// 横表示位置
 	/// </summary>
 	int pos_x = 0;
+	int pos_x2 = 250;
 
 	/// <summary>
 	/// 縦表示位置
 	/// </summary>
 	int pos_y = 0;
+	int pos_y2 = 50;
 
 public:
 
@@ -74,9 +76,13 @@ public:
 	}
 
 
+
+	//UI描画
 	void DrawUI()
 	{
 
+		DrawBox(pos_x2, pos_y2, pos_x2 + 200, pos_y2 + 100, GetColor(255, 0, 0), true);
+		
 
 
 	}

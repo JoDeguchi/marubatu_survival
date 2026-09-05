@@ -63,6 +63,8 @@ void SceneTest::Draw()
 
 	// スプライトの描画
 	this->sp0.Draw();
+
+	this->sp0.DrawUI();
 }
 
 /// <summary>
