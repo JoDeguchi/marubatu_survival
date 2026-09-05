@@ -44,10 +44,10 @@ void SceneOp::Draw()
 	// メッセージを描画
 	DrawString(600, 100, "〇×サバイバル", GetColor(255, 255, 255));
 	DrawString(500, 300, "オフライン対戦", GetColor(255, 255, 255));
-	DrawString(500, 400, "コンピューター対戦（むずかしさ）", GetColor(255, 255, 255));
-	DrawString(500, 450, "ふつう", GetColor(255, 255, 255));
-	DrawString(500, 470, "むずかしい", GetColor(255, 255, 255));
-	DrawString(500, 490, "げきむず", GetColor(255, 255, 255));
+	DrawString(500, 330, "コンピューター対戦（むずかしさ）", GetColor(255, 255, 255));
+	DrawString(500, 370, "ふつう", GetColor(255, 255, 255));
+	DrawString(500, 390, "むずかしい", GetColor(255, 255, 255));
+	DrawString(500, 410, "げきむず", GetColor(255, 255, 255));
 /*
 	if ((this->update_cnt / 40) % 2 == 0)
 	{
