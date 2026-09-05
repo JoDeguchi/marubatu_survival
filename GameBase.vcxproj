@@ -143,6 +143,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="KeyReader.h" />
+    <ClInclude Include="marubatukurasu.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneEd.h" />
     <ClInclude Include="SceneOp.h" />
