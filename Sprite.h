@@ -94,9 +94,14 @@ public:
 	{
 		//UI1
 		DrawBox(pos_x2, pos_y2, pos_x2 + 200, pos_y2 + 100, GetColor(255, 0, 0), true);
+		//文字列の描画
+		DrawString(pos_x2+10 , pos_y2 + 30, "プレイヤー1", GetColor(255, 255, 255));
+		
 		
 		//UI2
 		DrawBox(pos_x3, pos_y3, pos_x3 + 200, pos_y3 + 100, GetColor(255, 0, 0), true);
+		//文字列の描画
+		DrawString(pos_x3 + 10, pos_y3 + 30, "プレイヤー２", GetColor(255, 255, 255));
 
 
 

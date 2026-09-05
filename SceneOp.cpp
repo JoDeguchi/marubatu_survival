@@ -4,8 +4,7 @@
 
 void SceneOp::Init()
 {
-	// ”wŒi‰æ‘œ‚Ì“Çž
-	this->bg0.Load_image("op.png");
+	
 }
 
 /// <summary>
