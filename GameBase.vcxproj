@@ -135,6 +135,7 @@
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Line.cpp" />
+    <ClCompile Include="marubatu.cpp" />
     <ClCompile Include="SceneEd.cpp" />
     <ClCompile Include="SceneOp.cpp" />
     <ClCompile Include="SceneTest.cpp" />
@@ -145,6 +146,7 @@
     <ClInclude Include="Game.h" />
     <ClInclude Include="KeyReader.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="marubatu.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneEd.h" />
     <ClInclude Include="SceneOp.h" />

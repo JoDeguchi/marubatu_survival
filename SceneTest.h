@@ -6,6 +6,7 @@
 #include "Sprite.h"			// スプライトクラス
 #include "KeyReader.h"		// キーリーダー
 #include "Line.h"
+#include "marubatu.h"
 
 /// <summary>
 /// テスト（シーン）
@@ -28,9 +29,13 @@ class SceneTest : public SceneBase
 	// スプライトクラスのインスタンス
 	Sprite sp0;
 
+	//	線のインスタンス
 	Line line_w[2];
 	Line line_h[2];
 
+	//	丸とバツのインスタンス
+	Maru maru;
+	//Batu batu;	
 
 
 public:
