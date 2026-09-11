@@ -1,42 +1,42 @@
-#include "SceneTest.h"
+ï»¿#include "SceneTest.h"
 #include "DxLib.h"
 
 
 void SceneTest::Init()
 {
-	// ƒXƒvƒ‰ƒCƒg‰æ‘œ‚Ì“Ç
-	this->sp0 = Sprite("data/circle.png", 430, 200);
-	// ƒXƒvƒ‰ƒCƒg‚Ì‰ŠúˆÊ’uİ’è
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆç”»åƒã®èª­è¾¼
+	this->sp0 = Sprite("maru.png", 430, 200);
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®åˆæœŸä½ç½®è¨­å®š
 	this->sp0.Set_pos(430,200);
 
-	//	‰¡ü
+	//	æ¨ªç·š
 	line_w[0].SetLinePos(430, 330, 830, 330);
 	line_w[1].SetLinePos(430, 470, 830, 470);
-	//	cü
+	//	ç¸¦ç·š
 	line_h[0].SetLinePos(550, 200, 550, 600);
 	line_h[1].SetLinePos(700, 200, 700, 600);
 
-	//	ŠÛ‚Æƒoƒc‚Ì‰ŠúˆÊ’uİ’è
+	//	ä¸¸ã¨ãƒãƒ„ã®åˆæœŸä½ç½®è¨­å®š
 
 
 	//batu.Set_pos(700, 200);
 }
 
 /// <summary>
-/// “ü—Íˆ—
+/// å…¥åŠ›å‡¦ç†
 /// </summary>
 void SceneTest::Input()
 {
-	// ƒL[ó‘Ô“ÇiˆêŠ‡j
+	// ã‚­ãƒ¼çŠ¶æ…‹èª­è¾¼ï¼ˆä¸€æ‹¬ï¼‰
 	this->key_state.Read();
 }
 
 /// <summary>
-/// XVˆ—
+/// æ›´æ–°å‡¦ç†
 /// </summary>
 void SceneTest::Update()
 {
-	// ESCƒL[‚ÅI—¹
+	// ESCã‚­ãƒ¼ã§çµ‚äº†
 	if (this->key_state.CheckKey(KEY_INPUT_ESCAPE))
 	{
 		this->game_ptr->ChageScene(2);
@@ -45,27 +45,27 @@ void SceneTest::Update()
 }
 
 /// <summary>
-/// •`‰æˆ—
+/// æç”»å‡¦ç†
 /// </summary>
 void SceneTest::Draw()
 {
-	// ”wŒi0‚ğ•`‰æ
+	// èƒŒæ™¯0ã‚’æç”»
 	this->bg0.Draw();
 
-	// ƒXƒvƒ‰ƒCƒg‚Ì•`‰æ
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã®æç”»
 	this->sp0.Draw();
 
-	//	UI•`‰æ
+	//	UIæç”»
 	//this->sp0.DrawUI();
 
-	//	ü‚Ì•`‰æ	
+	//	ç·šã®æç”»	
 	for(int i = 0; i < 2; i++)
 	{
 		line_w[i].Draw();
 		line_h[i].Draw();
 	}
 	
-	//	ŠÛ‚Æƒoƒc‚Ì•`‰æ
+	//	ä¸¸ã¨ãƒãƒ„ã®æç”»
 	//maru.Draw();
 	//batu.Draw();
 
@@ -73,7 +73,7 @@ void SceneTest::Draw()
 }
 
 /// <summary>
-/// ‰¹ºÄ¶ˆ—
+/// éŸ³å£°å†ç”Ÿå‡¦ç†
 /// </summary>
 void SceneTest::Sound_play()
 {
