@@ -1,81 +1,77 @@
-#pragma once
+ï»¿#pragma once
 #include "SceneBase.h"
 
-#include "Game.h"			// ƒQ[ƒ€ƒNƒ‰ƒX
-#include "Background.h"		// ”wŒiƒNƒ‰ƒX
-#include "Sprite.h"			// ƒXƒvƒ‰ƒCƒgƒNƒ‰ƒX
-#include "KeyReader.h"		// ƒL[ƒŠ[ƒ_[
+#include "Game.h"			// ã‚²ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹
+#include "Background.h"		// èƒŒæ™¯ã‚¯ãƒ©ã‚¹
+#include "board.h"			// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚¯ãƒ©ã‚¹
+#include "KeyReader.h"		// ã‚­ãƒ¼ãƒªãƒ¼ãƒ€ãƒ¼
 #include "Line.h"
 #include "marubatu.h"
 
 /// <summary>
-/// ƒeƒXƒgiƒV[ƒ“j
+/// ãƒ†ã‚¹ãƒˆï¼ˆã‚·ãƒ¼ãƒ³ï¼‰
 /// </summary>
 class SceneTest : public SceneBase
 {
 	/// <summary>
-	/// GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[
+	/// Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼
 	/// </summary>
 	Game* game_ptr = nullptr;
 
 	/// <summary>
-	/// ƒL[ƒŠ[ƒ_[ƒCƒ“ƒXƒ^ƒ“ƒX
+	/// ã‚­ãƒ¼ãƒªãƒ¼ãƒ€ãƒ¼ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	/// </summary>
 	KeyReader key_state;
 
-	// ”wŒiƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	// èƒŒæ™¯ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	Background bg0;
 
-	// ƒXƒvƒ‰ƒCƒgƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-	Sprite sp0;
+	// ã‚¹ãƒ—ãƒ©ã‚¤ãƒˆã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	Board board;
 
-	//	ü‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
+	//	ç·šã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
 	Line line_w[2];
 	Line line_h[2];
 
-	//	ŠÛ‚Æƒoƒc‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-	//Maru maru;
-	//Batu batu;	
-
-	
-	int pos_x = 0;
-	int pos_y = 0;
+	//	ä¸¸ã¨ãƒãƒ„ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	Maru maru;
+	Batu batu;	
 
 
 public:
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	/// </summary>
-	/// <param name="arg_game_ptr">GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[</param>
+	/// <param name="arg_game_ptr">Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼</param>
 	SceneTest(Game* arg_game_ptr)
 	{
-		// GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[‚ğ•Û
+		// Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼ã‚’ä¿æŒ
 		this->game_ptr = arg_game_ptr;
 	}
 
 	/// <summary>
-	/// ‰Šú‰»ˆ—
+	/// åˆæœŸåŒ–å‡¦ç†
 	/// </summary>
 	void Init() override;
 
 	/// <summary>
-	/// “ü—Íˆ—
+	/// å…¥åŠ›å‡¦ç†
 	/// </summary>
 	void Input() override;
 
 	/// <summary>
-	/// XVˆ—
+	/// æ›´æ–°å‡¦ç†
 	/// </summary>
 	void Update() override;
 
 	/// <summary>
-	/// •`‰æˆ—
+	/// æç”»å‡¦ç†
 	/// </summary>
 	void Draw() override;
 	
 	/// <summary>
-	/// ‰¹ºÄ¶ˆ—
+	/// éŸ³å£°å†ç”Ÿå‡¦ç†
 	/// </summary>
 	void Sound_play() override;
 

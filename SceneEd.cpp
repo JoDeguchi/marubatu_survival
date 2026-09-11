@@ -1,31 +1,26 @@
-#include "SceneEd.h"
+ï»¿#include "SceneEd.h"
 
 #include "DxLib.h"
 
 
 void SceneEd::Init()
 {
-	// ”wŒi‰æ‘œ‚Ì“Ç
+	// èƒŒæ™¯ç”»åƒã®èª­è¾¼
 	this->bg0.Load_image("ed.png");
-
-	
-
-
-
 }
 
 /// <summary>
-/// •`‰æˆ—
+/// æç”»å‡¦ç†
 /// </summary>
 void SceneEd::Draw()
 {
-	// ”wŒi0‚ğ•`‰æ
+	// èƒŒæ™¯0ã‚’æç”»
 	//this->bg0.Draw();
 
 
 	SetFontSize(64);
-	DrawString(500, 100, "››‚ÌŸ‚¿", GetColor(255, 255, 255));
-	DrawString(300, 300, "ƒ^ƒCƒgƒ‹‚É–ß‚é", GetColor(255, 255, 255));
-	DrawString(300, 400, "ƒQ[ƒ€I—¹", GetColor(255, 255, 255));
+	DrawString(500, 100, "â—‹â—‹ã®å‹ã¡", GetColor(255, 255, 255));
+	DrawString(300, 300, "ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹", GetColor(255, 255, 255));
+	DrawString(300, 400, "ã‚²ãƒ¼ãƒ çµ‚äº†", GetColor(255, 255, 255));
 
 }

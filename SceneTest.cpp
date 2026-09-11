@@ -1,14 +1,11 @@
 ﻿#include "SceneTest.h"
 #include "DxLib.h"
 
-
+/// <summary>
+/// 初期化
+/// </summary>
 void SceneTest::Init()
 {
-	// スプライト画像の読込
-	this->sp0 = Sprite("maru.png", 430, 200);
-	// スプライトの初期位置設定
-	this->sp0.Set_pos(430,200);
-
 	//	横線
 	line_w[0].SetLinePos(430, 330, 830, 330);
 	line_w[1].SetLinePos(430, 470, 830, 470);
@@ -16,10 +13,11 @@ void SceneTest::Init()
 	line_h[0].SetLinePos(550, 200, 550, 600);
 	line_h[1].SetLinePos(700, 200, 700, 600);
 
-	//	丸とバツの初期位置設定
-
-
-	//batu.Set_pos(700, 200);
+	//	盤目の位置
+	board = Board("", 430, 200);
+	//	丸とバツ
+	maru=Maru("maru.png", 430, 200);
+	batu = Batu("batu.png", 430, 400);
 }
 
 /// <summary>
@@ -53,10 +51,7 @@ void SceneTest::Draw()
 	this->bg0.Draw();
 
 	// スプライトの描画
-	this->sp0.Draw();
-
-	//	UI描画
-	//this->sp0.DrawUI();
+	this->board.Draw();
 
 	//	線の描画	
 	for(int i = 0; i < 2; i++)
@@ -66,10 +61,8 @@ void SceneTest::Draw()
 	}
 	
 	//	丸とバツの描画
-	//maru.Draw();
-	//batu.Draw();
-
-	sp0.DrawSprite();
+	maru.Draw();
+	batu.Draw();
 }
 
 /// <summary>

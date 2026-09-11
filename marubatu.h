@@ -1,17 +1,27 @@
-#pragma once
+﻿#pragma once
 #include "DxLib.h"		// DxLib
-#include"Sprite.h"
+#include"board.h"
 
-//	�p��
-class Maru :public Sprite
+//	継承
+//	丸クラス
+class Maru :public Board
 {
-	int pos_x = 0;
-	int pos_y = 0;
-
 public:
-
-	void Set_pos(int arg_x, int arg_y);
+	//	デフォルト
+	Maru() {};
+	//	コンストラクタ
+	Maru(std::string arg_file_path, int arg_x, int arg_y);
 	void Draw();
 	
 };
 
+//	×クラス
+class Batu :public Board
+{
+public:
+	//	デフォルト
+	Batu() {};
+	//	コンストラクタ
+	Batu(std::string arg_file_path, int arg_x, int arg_y);
+	void Draw();
+};

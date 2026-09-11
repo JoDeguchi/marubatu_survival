@@ -1,74 +1,42 @@
-#pragma once
+ï»¿#pragma once
 #include "DxLib.h"		// DxLib
 
 /// <summary>
-/// ƒL[ƒŠ[ƒ_[ƒNƒ‰ƒX
+/// ã‚­ãƒ¼ãƒªãƒ¼ãƒ€ãƒ¼ã‚¯ãƒ©ã‚¹
 /// </summary>
 class KeyReader
 {
 	/// <summary>
-	/// ƒL[‚Ìó‘Ô”z—ñ
+	/// ã‚­ãƒ¼ã®çŠ¶æ…‹é…åˆ—
 	/// </summary>
 	char key_state_arr[256];
-
+	char old_key_state_arr[256];
 	/// <summary>
-	/// ƒL[‚ª‰Ÿ‚³‚ê‚½‚©
+	/// ã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸã‹
 	/// </summary>
 	bool key_press = false;
-
 public:
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	/// </summary>
-	KeyReader()
-	{
-		// ƒL[ó‘Ô”z—ñ‚ğ‰Šú‰»
-		for(int cnt = 0;cnt < 256; cnt++)
-		{
-			this->key_state_arr[cnt] = 0;
-		}
-	}
+	KeyReader();
 
 	/// <summary>
-	/// ƒL[“ÇiˆêŠ‡j
+	/// ã‚­ãƒ¼èª­è¾¼ï¼ˆä¸€æ‹¬ï¼‰
 	/// </summary>
-	void Read()
-	{
-		GetHitKeyStateAll(this->key_state_arr);
-
-		this->key_press = false;
-		for (int cnt = 0; cnt < 256; cnt++)
-		{
-			if (this->key_state_arr[cnt] != 0)
-			{
-				this->key_press = true;
-			}
-		}
-	}
+	void Read();
 
 	/// <summary>
-	/// ƒL[‚Ìó‘ÔŠm”F
+	/// ã‚­ãƒ¼ã®çŠ¶æ…‹ç¢ºèª
 	/// </summary>
-	/// <param name="arg_key_code">Šm”F‚·‚éƒL[‚ÌƒR[ƒh</param>
-	/// <returns>ƒL[‚Ìó‘Ô</returns>
-	bool CheckKey(int arg_key_code){
-		// w’è‚³‚ê‚½ƒL[‚Ìó‘Ô‚ğƒ`ƒFƒbƒN
-		if(this->key_state_arr[arg_key_code] == 1)
-		{
-			// ‰Ÿ‚³‚ê‚Ä‚¢‚ê‚Îtrue‚ğ•Ô‚·
-			return true;
-		}
-		// ‰Ÿ‚³‚ê‚Ä‚¢‚È‚¯‚ê‚Îfalse‚ğ•Ô‚·
-		return false;
-	}
+	/// <param name="arg_key_code">ç¢ºèªã™ã‚‹ã‚­ãƒ¼ã®ã‚³ãƒ¼ãƒ‰</param>
+	/// <returns>ã‚­ãƒ¼ã®çŠ¶æ…‹</returns>
+	bool CheckKey(int arg_key_code);
 
 	/// <summary>
-	/// ƒL[‚ª‰Ÿ‚³‚ê‚½‚©‚Ìƒ`ƒFƒbƒN
+	/// ã‚­ãƒ¼ãŒæŠ¼ã•ã‚ŒãŸã‹ã®ãƒã‚§ãƒƒã‚¯
 	/// </summary>
-	/// <returns>ó‘Ô</returns>
-	bool KeyPress()
-	{
-		return this->key_press;
-	}
+	/// <returns>çŠ¶æ…‹</returns>
+	bool KeyPress();
 };

@@ -1,60 +1,60 @@
-#pragma once
+ï»¿#pragma once
 #include <string>
 #include "DxLib.h"		// DxLib
 
 /// /// <summary>
-/// ”wŒiƒNƒ‰ƒX
+/// èƒŒæ™¯ã‚¯ãƒ©ã‚¹
 /// </summary>
 class Background
 {
 protected:
 
 	/// <summary>
-	/// ‰æ‘œƒtƒ@ƒCƒ‹ƒpƒX
+	/// ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹
 	/// </summary>
 	std::string file_path = "";
 
 	/// <summary>
-	/// ‰æ‘œƒnƒ“ƒhƒ‹
+	/// ç”»åƒãƒãƒ³ãƒ‰ãƒ«
 	/// </summary>
 	int image_hnd = -1;
 
 public:
 
 	/// <summary>
-	/// ƒfƒtƒHƒ‹ƒgƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	/// ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	/// </summary>
 	Background(){}
 
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	/// </summary>
-	/// <param name="arg_file_path">‰Šú‰æ‘œƒtƒ@ƒCƒ‹ƒpƒX</param>
+	/// <param name="arg_file_path">åˆæœŸç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹</param>
 	Background(std::string arg_file_path){
-		// ‰æ‘œƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
+		// ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
 		this->Load_image(arg_file_path);
 	}
 
 	/// <summary>
-	/// ‰æ‘œƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
+	/// ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
 	/// </summary>
-	/// <param name="arg_file_path">‰æ‘œƒtƒ@ƒCƒ‹ƒpƒX</param>
+	/// <param name="arg_file_path">ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹</param>
 	void Load_image(std::string arg_file_path)
 	{
-		// ‰æ‘œƒtƒ@ƒCƒ‹ƒpƒX‚ğ•Û
+		// ç”»åƒãƒ•ã‚¡ã‚¤ãƒ«ãƒ‘ã‚¹ã‚’ä¿æŒ
 		this->file_path = arg_file_path;
 
-		// w’è‚³‚ê‚½ƒtƒ@ƒCƒ‹‚ğ“Ç‚İ‚Ş
+		// æŒ‡å®šã•ã‚ŒãŸãƒ•ã‚¡ã‚¤ãƒ«ã‚’èª­ã¿è¾¼ã‚€
 		this->image_hnd = LoadGraph(this->file_path.c_str());
 	}
 
 	/// <summary>
-	/// ”wŒi‚ğ•`‰æ
-	/// @“§‰ß–³‚µ
+	/// èƒŒæ™¯ã‚’æç”»
+	/// ã€€é€éç„¡ã—
 	/// </summary>
-	virtual void Draw()
+	void Draw()
 	{
-		// ”wŒi‚ğ•`‰æ
+		// èƒŒæ™¯ã‚’æç”»
 		DrawGraph(0, 0, this->image_hnd, false);	
 	}
 };

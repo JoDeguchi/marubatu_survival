@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="KeyRead.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="marubatu.cpp" />
     <ClCompile Include="SceneEd.cpp" />
@@ -151,7 +152,7 @@
     <ClInclude Include="SceneEd.h" />
     <ClInclude Include="SceneOp.h" />
     <ClInclude Include="SceneTest.h" />
-    <ClInclude Include="Sprite.h" />
+    <ClInclude Include="board.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
