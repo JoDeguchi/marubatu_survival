@@ -40,6 +40,11 @@ void SceneTest::Update()
 		this->game_ptr->ChageScene(2);
 	}
 
+	if (key_state.CheckKey(KEY_INPUT_1))
+	{
+		
+	}
+
 }
 
 /// <summary>
