@@ -17,7 +17,7 @@ void SceneOp::Input()
 	this->key_state.Read();
 
 	//	マウス読み込み
-	mouse.Read();
+	this->mouse.Read();
 }
 
 /// <summary>
@@ -25,6 +25,28 @@ void SceneOp::Input()
 /// </summary>
 void SceneOp::Update()
 {
+	/// マウスクリック時の処理
+	if (this->mouse.ClicPress())
+	{
+		int x = this->mouse.GetX();
+		int y = this->mouse.GetY();
+
+		// 「オフライン対戦」のクリック領域
+		const int offline_left = 400;
+		const int offline_top = 300;
+		const int offline_right = 650;
+		const int offline_bottom = 335;
+
+		// オフライン対戦をクリック
+		if (x >= offline_left && x <= offline_right &&y >= offline_top && y <= offline_bottom)
+		{
+			this->game_ptr->ChageScene(1);
+			return;
+		}
+
+	}
+
+	/*
 	// キーが押されたかのチェック
 	if (this->key_state.KeyPress())
 	{
@@ -34,6 +56,7 @@ void SceneOp::Update()
 
 	// 更新カウンターインクリメント
 	this->update_cnt++;
+    */
 }
 
 /// <summary>
@@ -45,8 +68,8 @@ void SceneOp::Draw()
 	this->bg0.Draw();
 
 	// マウス座標を取得
-	int mouseX = mouse.GetX();
-	int mouseY = mouse.GetY();
+	int mouseX = this->mouse.GetX();
+	int mouseY = this->mouse.GetY();
 
 
 	// タイトル
@@ -74,7 +97,7 @@ void SceneOp::Draw()
 	int computerColor = GetColor(255, 255, 255);
 
 	if (mouseX >= 400 && mouseX <= 850 &&
-		mouseY >= 340 && mouseY <= 375)
+        mouseY >= 340 && mouseY <= 375)
 	{
 		computerColor = GetColor(255, 255, 0);
 	}
@@ -87,36 +110,36 @@ void SceneOp::Draw()
 
 	int normalColor = GetColor(255, 255, 255);
 
-	if (mouseX >= 500 && mouseX <= 570 &&
+	if (mouseX >= 700 && mouseX <= 770 &&
 		mouseY >= 400 && mouseY <= 430)
 	{
 		normalColor = GetColor(255, 255, 0);
 	}
 
-	DrawString(500, 400, "ふつう", normalColor);
+	DrawString(700, 400, "ふつう", normalColor);
 
 	// むずかしい
 	int hardColor = GetColor(255, 255, 255);
 
-	if (mouseX >= 500 && mouseX <= 620 &&
+	if (mouseX >= 700 && mouseX <= 830 &&
 		mouseY >= 430 && mouseY <= 455)
 	{
 		hardColor = GetColor(255, 255, 0);
 	}
 
-	DrawString(500, 430, "むずかしい", hardColor);
+	DrawString(700, 430, "むずかしい", hardColor);
 
 
 	// げきむず
 	int veryHardColor = GetColor(255, 255, 255);
 
-	if (mouseX >= 500 && mouseX <= 620 &&
+	if (mouseX >= 700 && mouseX <= 800 &&
 		mouseY >= 460 && mouseY <= 485)
 	{
 		veryHardColor = GetColor(255, 255, 0);
 	}
 
-	DrawString(500, 460, "げきむず", veryHardColor);
+	DrawString(700, 460, "げきむず", veryHardColor);
 
 
 	// あそびかた
