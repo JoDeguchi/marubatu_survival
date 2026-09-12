@@ -4,7 +4,10 @@
 
 void SceneOp::Init()
 {
-	
+	// マウス座標を取得
+	int mouseX = mouse.GetX();
+	int mouseY = mouse.GetY();
+
 }
 
 /// <summary>
@@ -14,6 +17,9 @@ void SceneOp::Input()
 {
 	// キー状態読込（一括）
 	this->key_state.Read();
+
+	//	マウス読み込み
+	mouse.Read();
 }
 
 /// <summary>
@@ -41,19 +47,19 @@ void SceneOp::Draw()
 	this->bg0.Draw();
 
 	// メッセージを描画
-
+	// タイトル
 	SetFontSize(64);
 	DrawString(400, 100, "〇×サバイバル", GetColor(255, 255, 255));
-
+	// プレイスタイルの選択
 	SetFontSize(32);
 	DrawString(400, 300, "オフライン対戦", GetColor(255, 255, 255));
 	DrawString(400, 340, "コンピューター対戦（むずかしさ）", GetColor(255, 255, 255));
-
+	// 難易度
 	SetFontSize(25);
 	DrawString(500, 400, "ふつう", GetColor(255, 255, 255));
 	DrawString(500, 430, "むずかしい", GetColor(255, 255, 255));
 	DrawString(500, 460, "げきむず", GetColor(255, 255, 255));
-
+	// 遊び方
 	SetFontSize(22);
 	DrawString(1000, 600, "あそびかた", GetColor(255, 255, 255));
 

@@ -4,7 +4,7 @@
 #include "Game.h"			// ゲームクラス
 #include "Background.h"		// 背景クラス
 #include "KeyReader.h"		// キーリーダー
-
+#include "Mouse.h"          // マウス 　　
 
 /// <summary>
 /// オープニング（シーン）
@@ -23,6 +23,9 @@ class SceneOp : public SceneBase
 
 	// 背景クラスのインスタンス
 	Background bg0;
+
+	//	マウスのインスタンス
+	Mouse mouse;
 
 
 public:
