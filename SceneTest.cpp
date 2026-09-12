@@ -21,6 +21,7 @@ void SceneTest::Init()
 	{
 		for (int col = 0; col < 3; col++)
 		{
+			//	１マス１３３pxとして
 			int x = 430 + col * 133;
 			int y = 200 + row * 133;
 
@@ -29,6 +30,8 @@ void SceneTest::Init()
 		}
 	}
 
+	ui = UI("playerUI.png",30,-60);
+	ui2 = UI("NPCUI.png", 750, -70);
 }
 
 /// <summary>
@@ -53,6 +56,7 @@ void SceneTest::Update()
 		this->game_ptr->ChageScene(2);
 	}
 
+	//	マウスクリックされたら
 	if (mouse.ClicPress())
 	{
 
@@ -79,9 +83,6 @@ void SceneTest::Update()
 			}
 		}
 	}
-
-
-	
 
 }
 
@@ -120,6 +121,9 @@ void SceneTest::Draw()
 			}
 		}
 	}
+
+	ui.Draw();
+	ui2.Draw();
 }
 
 /// <summary>

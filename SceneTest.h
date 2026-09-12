@@ -8,6 +8,7 @@
 #include "Line.h"
 #include "marubatu.h"
 #include "Mouse.h"
+#include "UI.h"
 
 #define BOARD_SIZE_W 3
 #define BOARD_SIZE_H 3
@@ -50,7 +51,9 @@ class SceneTest : public SceneBase
 	//	盤の大きさ
 	int board_size[BOARD_SIZE_W][BOARD_SIZE_H] = {};
 	
-
+	//	うい
+	UI ui;
+	UI ui2;
 
 public:
 
