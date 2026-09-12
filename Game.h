@@ -16,6 +16,8 @@ class Game
 	/// </summary>
 	SceneBase* scene_arr[3] = { nullptr, nullptr, nullptr };
 
+	
+
 public:
 
 	/// <summary>

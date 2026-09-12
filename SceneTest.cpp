@@ -6,6 +6,9 @@
 /// </summary>
 void SceneTest::Init()
 {
+	playerwinner = false;
+	npcwinner = false;
+	timer = 0;
 	// 横線
 	line_w[0].SetLinePos(430, 333, 830, 333);
 	line_w[1].SetLinePos(430, 466, 830, 466);
@@ -32,6 +35,9 @@ void SceneTest::Init()
 
 	ui = UI("playerUI.png",30,-60);
 	ui2 = UI("NPCUI.png", 750, -70);
+
+
+	
 }
 
 /// <summary>
@@ -53,10 +59,12 @@ void SceneTest::Update()
 	if (check.CheckWin(board.board_size, 1))
 	{
 		timer++;
+		playerwinner = true;
 	}
 	else if (check.CheckWin(board.board_size, 2))
 	{
 		timer++;
+		npcwinner = true;
 	}
 
 	if (timer > 180)
@@ -69,6 +77,9 @@ void SceneTest::Update()
 	if (timer == 180)
 	{
 		this->game_ptr->ChageScene(2);
+		playerwinner = false;
+		npcwinner = false;
+		timer = 0;
 	}
 		
 	
