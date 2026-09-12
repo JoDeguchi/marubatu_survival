@@ -31,6 +31,12 @@ public:
 		this->pos_y = arg_y;
 	}
 
+	void SetPos(int arg_x, int arg_y)
+	{
+		pos_x = arg_x;
+		pos_y = arg_y;
+	}
+
 	/// <summary>
 	/// 移動
 	/// </summary>

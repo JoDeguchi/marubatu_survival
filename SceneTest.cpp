@@ -6,18 +6,29 @@
 /// </summary>
 void SceneTest::Init()
 {
-	//	横線
-	line_w[0].SetLinePos(430, 330, 830, 330);
-	line_w[1].SetLinePos(430, 470, 830, 470);
-	//	縦線
-	line_h[0].SetLinePos(550, 200, 550, 600);
-	line_h[1].SetLinePos(700, 200, 700, 600);
+	// 横線
+	line_w[0].SetLinePos(430, 333, 830, 333);
+	line_w[1].SetLinePos(430, 466, 830, 466);
+
+	// 縦線
+	line_h[0].SetLinePos(563, 200, 563, 600);
+	line_h[1].SetLinePos(696, 200, 696, 600);
 
 	//	盤目の位置
 	board = Board("", 430, 200);
 	//	丸とバツ
-	maru=Maru("maru.png", 430, 200);
-	batu = Batu("batu.png", 430, 400);
+	for (int row = 0; row < 3; row++)
+	{
+		for (int col = 0; col < 3; col++)
+		{
+			int x = 430 + col * 133;
+			int y = 200 + row * 133;
+
+			maru[row][col] = Maru("maru.png", x, y);
+			batu[row][col] = Batu("batu.png", x, y);
+		}
+	}
+
 }
 
 /// <summary>
@@ -44,12 +55,32 @@ void SceneTest::Update()
 
 	if (mouse.ClicPress())
 	{
-		if(turn==0)turn = 1;
-		else if (turn == 1)turn = 0;
 
+		int x =mouse.GetX() - 430;
+		int y =mouse.GetY() - 200;
+
+		if (x >= 0 && x < 400 && y >= 0 && y < 400)
+		{
+			int col = x / (400 / 3);
+			int row = y / (400 / 3);
+
+			if (board_size[row][col] == 0)
+			{
+				if (turn == 0)
+				{
+					board_size[row][col] = 1;	// 〇
+					turn = 1;
+				}
+				else
+				{
+					board_size[row][col] = 2;	// ×
+					turn = 0;
+				}
+			}
+		}
 	}
 
-	
+
 	
 
 }
@@ -72,11 +103,23 @@ void SceneTest::Draw()
 		line_h[i].Draw();
 	}
 	
-	//	丸とバツの描画
-	if(turn==0)maru.Draw();
-	if(turn==1)batu.Draw();
-
 	
+	for (int row = 0; row < 3; row++)
+	{
+		for (int col = 0; col < 3; col++)
+		{
+			if (board_size[row][col] == 1)
+			{
+				// 〇を描画
+				maru[row][col].Draw();
+			}
+			else if (board_size[row][col] == 2)
+			{
+				// ×を描画
+				batu[row][col].Draw();
+			}
+		}
+	}
 }
 
 /// <summary>

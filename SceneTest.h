@@ -9,6 +9,9 @@
 #include "marubatu.h"
 #include "Mouse.h"
 
+#define BOARD_SIZE_W 3
+#define BOARD_SIZE_H 3
+
 /// <summary>
 /// テスト（シーン）
 /// </summary>
@@ -35,14 +38,18 @@ class SceneTest : public SceneBase
 	Line line_h[2];
 
 	//	丸とバツのインスタンス
-	Maru maru;
-	Batu batu;	
+	Maru maru[3][3];
+	Batu batu[3][3];	
 
 	//	ターン
 	int turn = 0;
 
 	//	マウス
 	Mouse mouse;
+
+	//	盤の大きさ
+	int board_size[BOARD_SIZE_W][BOARD_SIZE_H] = {};
+	
 
 
 public:

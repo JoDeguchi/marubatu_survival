@@ -3,6 +3,7 @@
 
 #include "Game.h"			// ゲームクラス
 #include "Background.h"		// 背景クラス
+#include "Mouse.h"
 
 /// <summary>
 /// エンディング（シーン）
@@ -17,6 +18,9 @@ class SceneEd : public SceneBase
 
 	// 背景クラスのインスタンス
 	Background bg0;
+
+	// マウス
+	Mouse mouse;
 
 public:
 	/// <summary>
@@ -37,12 +41,12 @@ public:
 	/// <summary>
 	/// 入力処理
 	/// </summary>
-	void Input() override {};
+	void Input() override;
 
 	/// <summary>
 	/// 更新処理
 	/// </summary>
-	void Update() override {};
+	void Update() override;
 
 	/// <summary>
 	/// 描画処理
