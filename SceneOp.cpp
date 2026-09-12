@@ -7,6 +7,8 @@ void SceneOp::Init()
 	// ƒ}ƒEƒXÀ•W‚ðŽæ“¾
 	int mouseX = mouse.GetX();
 	int mouseY = mouse.GetY();
+	// ”wŒi‰æ‘œ‚Ì“Çž
+	this->bg0.Load_image("background.png");
 
 }
 

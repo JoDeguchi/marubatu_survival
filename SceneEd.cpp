@@ -7,7 +7,7 @@
 void SceneEd::Init()
 {
 	// 背景画像の読込
-	this->bg0.Load_image("ed.png");
+	this->bg0.Load_image("background.png");
 }
 
 /// <summary>
@@ -64,7 +64,7 @@ void SceneEd::Update()
 void SceneEd::Draw()
 {
 	// 背景0を描画
-	//this->bg0.Draw();
+	this->bg0.Draw();
 
 
 	SetFontSize(64);
