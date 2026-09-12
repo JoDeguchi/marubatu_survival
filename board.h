@@ -3,6 +3,9 @@
 #include "DxLib.h"		// DxLib
 #include "Background.h"
 
+#define BOARD_SIZE_W 3
+#define BOARD_SIZE_H 3
+
 /// <summary>
 /// 盤
 /// </summary>
@@ -14,6 +17,11 @@ protected:
 	int pos_x=0 ,pos_y = 0;
 
 public:
+
+
+	//	盤の大きさ
+	int board_size[BOARD_SIZE_W][BOARD_SIZE_H] = {};
+
 
 	///// <summary>
 	///// デフォルトコンストラクタ

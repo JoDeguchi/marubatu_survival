@@ -50,11 +50,28 @@ void SceneTest::Input()
 /// </summary>
 void SceneTest::Update()
 {
+	if (check.CheckWin(board.board_size, 1))
+	{
+		timer++;
+	}
+	else if (check.CheckWin(board.board_size, 2))
+	{
+		timer++;
+	}
+
+	if (timer > 180)
+	{
+		timer = 180;
+	}
+
 	// ESCキーで終了
-	if (this->key_state.CheckKey(KEY_INPUT_ESCAPE))
+	
+	if (timer == 180)
 	{
 		this->game_ptr->ChageScene(2);
 	}
+		
+	
 
 	//	マウスクリックされたら
 	if (mouse.ClicPress())
@@ -68,16 +85,16 @@ void SceneTest::Update()
 			int col = x / (400 / 3);
 			int row = y / (400 / 3);
 
-			if (board_size[row][col] == 0)
+			if (board.board_size[row][col] == 0)
 			{
 				if (turn == 0)
 				{
-					board_size[row][col] = 1;	// 〇
+					board.board_size[row][col] = 1;	// 〇
 					turn = 1;
 				}
 				else
 				{
-					board_size[row][col] = 2;	// ×
+					board.board_size[row][col] = 2;	// ×
 					turn = 0;
 				}
 			}
@@ -109,12 +126,12 @@ void SceneTest::Draw()
 	{
 		for (int col = 0; col < 3; col++)
 		{
-			if (board_size[row][col] == 1)
+			if (board.board_size[row][col] == 1)
 			{
 				// 〇を描画
 				maru[row][col].Draw();
 			}
-			else if (board_size[row][col] == 2)
+			else if (board.board_size[row][col] == 2)
 			{
 				// ×を描画
 				batu[row][col].Draw();
@@ -124,6 +141,16 @@ void SceneTest::Draw()
 
 	ui.Draw();
 	ui2.Draw();
+
+	if (check.CheckWin(board.board_size,1))
+	{
+		//	そろったと描画
+		check.Draw();
+	}
+	else if (check.CheckWin(board.board_size, 2))
+	{
+		check.Draw2();
+	}
 }
 
 /// <summary>

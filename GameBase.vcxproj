@@ -133,6 +133,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Check.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="KeyRead.cpp" />
     <ClCompile Include="Line.cpp" />
@@ -145,6 +146,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
+    <ClInclude Include="Check.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="KeyReader.h" />
     <ClInclude Include="Line.h" />
