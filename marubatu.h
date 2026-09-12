@@ -6,6 +6,7 @@
 //	丸クラス
 class Maru :public Board
 {
+	int turn = 0;
 public:
 	//	デフォルト
 	Maru() {};
@@ -16,8 +17,9 @@ public:
 };
 
 //	×クラス
-class Batu :public Board
+class Batu :public Maru
 {
+	Maru maru;
 public:
 	//	デフォルト
 	Batu() {};
