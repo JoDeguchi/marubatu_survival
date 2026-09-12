@@ -7,6 +7,7 @@
 #include "KeyReader.h"		// キーリーダー
 #include "Line.h"
 #include "marubatu.h"
+#include "Mouse.h"
 
 /// <summary>
 /// テスト（シーン）
@@ -36,6 +37,12 @@ class SceneTest : public SceneBase
 	//	丸とバツのインスタンス
 	Maru maru;
 	Batu batu;	
+
+	//	ターン
+	int turn = 0;
+
+	//	マウス
+	Mouse mouse;
 
 
 public:

@@ -27,6 +27,8 @@ void SceneTest::Input()
 {
 	// キー状態読込（一括）
 	this->key_state.Read();
+	//	マウス読み込み
+	mouse.Read();
 }
 
 /// <summary>
@@ -40,10 +42,15 @@ void SceneTest::Update()
 		this->game_ptr->ChageScene(2);
 	}
 
-	if (key_state.CheckKey(KEY_INPUT_1))
+	if (mouse.ClicPress())
 	{
-		
+		if(turn==0)turn = 1;
+		else if (turn == 1)turn = 0;
+
 	}
+
+	
+	
 
 }
 
@@ -66,8 +73,10 @@ void SceneTest::Draw()
 	}
 	
 	//	丸とバツの描画
-	maru.Draw();
-	batu.Draw();
+	if(turn==0)maru.Draw();
+	if(turn==1)batu.Draw();
+
+	
 }
 
 /// <summary>

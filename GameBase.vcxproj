@@ -137,7 +137,6 @@
     <ClCompile Include="KeyRead.cpp" />
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="marubatu.cpp" />
-    <ClCompile Include="mausu.cpp" />
     <ClCompile Include="Mouse.cpp" />
     <ClCompile Include="SceneEd.cpp" />
     <ClCompile Include="SceneOp.cpp" />

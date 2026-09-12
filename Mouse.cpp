@@ -1,18 +1,37 @@
 #include "Mouse.h"
 #include "DxLib.h"
 
-void Mouse::Update()
+void Mouse::Read()
 {
-	// マウス位置を取得
-	int x = 0;
-	int y = 0;
-	GetMousePoint(&x, &y);
-	this->mouse_x = x;
-	this->mouse_y = y;
+	// 前フレームの状態を保存
+	bool prev = mouse_frame;
+	// 今の状態を取得
+	mouse_frame = (GetMouseInput() & MOUSE_INPUT_LEFT) != 0;
+	// 押された瞬間
+	clic_down = (!prev && mouse_frame);
+	//	マウス座標
+	GetMousePoint(&mouse_x, &mouse_y);
+}
 
-	// マウスボタン状態を取得（DxLib のフラグを使用）
-	int mouseInput = GetMouseInput();
-	this->mouse_left = (mouseInput & MOUSE_INPUT_LEFT) != 0;
-	this->mouse_right = (mouseInput & MOUSE_INPUT_RIGHT) != 0;
-	this->mouse_middle = (mouseInput & MOUSE_INPUT_MIDDLE) != 0;
+//	結果を返す
+bool Mouse::ClicPress() const
+{
+	return clic_down;
+}
+
+
+/// <summary>
+   /// マウスX座標
+   /// </summary>
+int Mouse::GetX() const
+{
+	return mouse_x;
+}
+
+/// <summary>
+/// マウスY座標
+/// </summary>
+int Mouse::GetY() const
+{
+	return mouse_y;
 }

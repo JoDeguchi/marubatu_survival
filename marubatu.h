@@ -6,7 +6,6 @@
 //	丸クラス
 class Maru :public Board
 {
-	int turn = 0;
 public:
 	//	デフォルト
 	Maru() {};
