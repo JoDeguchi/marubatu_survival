@@ -27,6 +27,7 @@ class SceneOp : public SceneBase
 	//	マウスのインスタンス
 	Mouse mouse;
 
+	
 
 public:
 	/// <summary>

@@ -4,12 +4,8 @@
 
 void SceneOp::Init()
 {
-	// マウス座標を取得
-	int mouseX = mouse.GetX();
-	int mouseY = mouse.GetY();
 	// 背景画像の読込
 	this->bg0.Load_image("background.png");
-
 }
 
 /// <summary>
@@ -45,34 +41,95 @@ void SceneOp::Update()
 /// </summary>
 void SceneOp::Draw()
 {
-	// 背景0を描画
+	// 背景
 	this->bg0.Draw();
 
-	// メッセージを描画
+	// マウス座標を取得
+	int mouseX = mouse.GetX();
+	int mouseY = mouse.GetY();
+
+
 	// タイトル
 	SetFontSize(64);
-	DrawString(400, 100, "〇×サバイバル", GetColor(255, 255, 255));
-	// プレイスタイルの選択
+	DrawString(400, 100, "〇×サバイバル",
+		GetColor(255, 255, 255));
+
+
+	// オフライン対戦
 	SetFontSize(32);
-	DrawString(400, 300, "オフライン対戦", GetColor(255, 255, 255));
-	DrawString(400, 340, "コンピューター対戦（むずかしさ）", GetColor(255, 255, 255));
+
+	int offlineColor = GetColor(255, 255, 255);
+
+	if (mouseX >= 400 && mouseX <= 650 &&
+		mouseY >= 300 && mouseY <= 335)
+	{
+		// マウスをかざすと黄色に
+		offlineColor = GetColor(255, 255, 0);
+	}
+
+	DrawString(400, 300, "オフライン対戦", offlineColor);
+
+
+	// コンピューター対戦
+	int computerColor = GetColor(255, 255, 255);
+
+	if (mouseX >= 400 && mouseX <= 850 &&
+		mouseY >= 340 && mouseY <= 375)
+	{
+		computerColor = GetColor(255, 255, 0);
+	}
+
+	DrawString(400, 340,"コンピューター対戦（むずかしさ）",computerColor);
+
+
 	// 難易度
 	SetFontSize(25);
-	DrawString(500, 400, "ふつう", GetColor(255, 255, 255));
-	DrawString(500, 430, "むずかしい", GetColor(255, 255, 255));
-	DrawString(500, 460, "げきむず", GetColor(255, 255, 255));
-	// 遊び方
-	SetFontSize(22);
-	DrawString(1000, 600, "あそびかた", GetColor(255, 255, 255));
 
-	
-/*
-	if ((this->update_cnt / 40) % 2 == 0)
+	int normalColor = GetColor(255, 255, 255);
+
+	if (mouseX >= 500 && mouseX <= 570 &&
+		mouseY >= 400 && mouseY <= 430)
 	{
-		SetFontSize(32);
-		DrawString(522, 602, "Press Any Key!!", GetColor(220, 220, 220));
-		DrawString(520, 600, "Press Any Key!!", GetColor(255, 0, 0));
+		normalColor = GetColor(255, 255, 0);
 	}
-*/
-}
 
+	DrawString(500, 400, "ふつう", normalColor);
+
+	// むずかしい
+	int hardColor = GetColor(255, 255, 255);
+
+	if (mouseX >= 500 && mouseX <= 620 &&
+		mouseY >= 430 && mouseY <= 455)
+	{
+		hardColor = GetColor(255, 255, 0);
+	}
+
+	DrawString(500, 430, "むずかしい", hardColor);
+
+
+	// げきむず
+	int veryHardColor = GetColor(255, 255, 255);
+
+	if (mouseX >= 500 && mouseX <= 620 &&
+		mouseY >= 460 && mouseY <= 485)
+	{
+		veryHardColor = GetColor(255, 255, 0);
+	}
+
+	DrawString(500, 460, "げきむず", veryHardColor);
+
+
+	// あそびかた
+	
+	SetFontSize(22);
+
+	int howToColor = GetColor(255, 255, 255);
+
+	if (mouseX >= 1000 && mouseX <= 1100 &&
+		mouseY >= 600 && mouseY <= 625)
+	{
+		howToColor = GetColor(255, 255, 0);
+	}
+
+	DrawString(1000, 600, "あそびかた", howToColor);
+}
