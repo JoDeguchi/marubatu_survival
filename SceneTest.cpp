@@ -6,8 +6,10 @@
 /// </summary>
 void SceneTest::Init()
 {
-	playerwinner = false;
-	npcwinner = false;
+	//	プレイヤーとNPCが勝ったフラグをオフに
+	check.playerwinner = false;
+	check.npcwinner = false;
+	//	時間０に
 	timer = 0;
 	// 横線
 	line_w[0].SetLinePos(430, 333, 830, 333);
@@ -19,11 +21,10 @@ void SceneTest::Init()
 
 	//	盤目の位置
 	board = Board("", 430, 200);
-	//	丸とバツ
-	for (int row = 0; row < 3; row++)
-	{
-		for (int col = 0; col < 3; col++)
-		{
+
+	//	丸とバツ　マスごとに初期化
+	for (int row = 0; row < 3; row++){
+		for (int col = 0; col < 3; col++){
 			//	１マス１３３pxとして
 			int x = 430 + col * 133;
 			int y = 200 + row * 133;
@@ -33,10 +34,9 @@ void SceneTest::Init()
 		}
 	}
 
+	//	UI
 	ui = UI("playerUI.png",30,-60);
 	ui2 = UI("NPCUI.png", 750, -70);
-
-
 	
 }
 
@@ -45,8 +45,6 @@ void SceneTest::Init()
 /// </summary>
 void SceneTest::Input()
 {
-	// キー状態読込（一括）
-	this->key_state.Read();
 	//	マウス読み込み
 	mouse.Read();
 }
@@ -56,55 +54,25 @@ void SceneTest::Input()
 /// </summary>
 void SceneTest::Update()
 {
-	if (check.CheckWin(board.board_size, 1))
-	{
-		timer++;
-		playerwinner = true;
-	}
-	else if (check.CheckWin(board.board_size, 2))
-	{
-		timer++;
-		npcwinner = true;
-	}
-
-	if (timer > 180)
-	{
-		timer = 180;
-	}
-
-	// ESCキーで終了
-	
-	if (timer == 180)
-	{
-		this->game_ptr->ChageScene(2);
-		playerwinner = false;
-		npcwinner = false;
-		timer = 0;
-	}
-		
-	
-
-	//	マウスクリックされたら
+	//	マウスクリックされたら、まるばつ置くための処理（ターン分け交互）
 	if (mouse.ClicPress())
 	{
+		int x = mouse.GetX() - 430;
+		int y = mouse.GetY() - 200;
 
-		int x =mouse.GetX() - 430;
-		int y =mouse.GetY() - 200;
-
-		if (x >= 0 && x < 400 && y >= 0 && y < 400)
-		{
+		if (x >= 0 && x < 400 && y >= 0 && y < 400) {
 			int col = x / (400 / 3);
 			int row = y / (400 / 3);
 
-			if (board.board_size[row][col] == 0)
-			{
-				if (turn == 0)
-				{
+			//	◎罰交互
+			if (board.board_size[row][col] == 0) {
+				//	ターン０のときは１（〇）を
+				if (turn == 0) {
 					board.board_size[row][col] = 1;	// 〇
 					turn = 1;
 				}
-				else
-				{
+				//	ターン１のときは２（×）を
+				else {
 					board.board_size[row][col] = 2;	// ×
 					turn = 0;
 				}
@@ -112,6 +80,29 @@ void SceneTest::Update()
 		}
 	}
 
+	//	そろったら勝ったと判定　それぞれ
+	if (check.CheckWin(board.board_size, 1))
+	{
+		timer++;
+		check.playerwinner = true;
+	}
+	else if (check.CheckWin(board.board_size, 2))
+	{
+		timer++;
+		check.npcwinner = true;
+	}
+
+	//	時間を止める
+	if (timer > 180)	timer = 180;
+	
+	//	エンディングへ
+	if (timer == 180){
+		this->game_ptr->ChageScene(2);
+		check.playerwinner = false;
+		check.npcwinner = false;
+		timer = 0;
+	}
+	
 }
 
 /// <summary>
@@ -132,34 +123,29 @@ void SceneTest::Draw()
 		line_h[i].Draw();
 	}
 	
-	
-	for (int row = 0; row < 3; row++)
-	{
-		for (int col = 0; col < 3; col++)
-		{
-			if (board.board_size[row][col] == 1)
-			{
+	//	丸とばつの描画
+	for (int row = 0; row < 3; row++){
+		for (int col = 0; col < 3; col++){
+			if (board.board_size[row][col] == 1){
 				// 〇を描画
 				maru[row][col].Draw();
 			}
-			else if (board.board_size[row][col] == 2)
-			{
+			else if (board.board_size[row][col] == 2){
 				// ×を描画
 				batu[row][col].Draw();
 			}
 		}
 	}
 
+	//	UIの描画
 	ui.Draw();
 	ui2.Draw();
 
-	if (check.CheckWin(board.board_size,1))
-	{
-		//	そろったと描画
+	//	そろったと文字列でそれぞれ描画
+	if (check.CheckWin(board.board_size,1)){
 		check.Draw();
 	}
-	else if (check.CheckWin(board.board_size, 2))
-	{
+	else if (check.CheckWin(board.board_size, 2)){
 		check.Draw2();
 	}
 }

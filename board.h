@@ -7,7 +7,7 @@
 #define BOARD_SIZE_H 3
 
 /// <summary>
-/// 盤
+/// 盤単体のクラス
 /// </summary>
 class Board: public Background
 {
@@ -16,8 +16,9 @@ protected:
 	//	座標位置
 	int pos_x=0 ,pos_y = 0;
 
-public:
+private:
 
+public:
 
 	//	盤の大きさ
 	int board_size[BOARD_SIZE_W][BOARD_SIZE_H] = {};

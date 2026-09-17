@@ -3,10 +3,10 @@
 
 #include "Game.h"			// ゲームクラス
 #include "Background.h"		// 背景クラス
-#include "board.h"			// スプライトクラス
+#include "Board.h"			// スプライトクラス
 #include "KeyReader.h"		// キーリーダー
 #include "Line.h"
-#include "marubatu.h"
+#include "Marubatu.h"
 #include "Mouse.h"
 #include "UI.h"
 #include "Check.h"
@@ -54,9 +54,6 @@ class SceneTest : public SceneBase
 	Check check;
 
 	float timer = 0.0f;
-
-	bool playerwinner = false;
-	bool npcwinner = false;
 
 public:
 

@@ -1,7 +1,9 @@
-#include "Check.h"
+ï»¿#include "Check.h"
 
+//	å‹ã£ãŸã‹ã©ã†ã‹
 bool Check::CheckWin(int board[3][3],int player)
 {
+	//	æ¨ªãŒãã‚ã£ãŸã¨ã
 	for (int row = 0; row < 3; row++)
 	{
 		if (board[row][0] == player &&
@@ -12,7 +14,7 @@ bool Check::CheckWin(int board[3][3],int player)
 		}
 	}
 
-	// c
+	// ç¸¦
 	for (int col = 0; col < 3; col++)
 	{
 		if (board[0][col] == player &&
@@ -23,7 +25,7 @@ bool Check::CheckWin(int board[3][3],int player)
 		}
 	}
 
-	// ¶ã ¨ ‰E‰º
+	// å·¦ä¸Š â†’ å³ä¸‹
 	if (board[0][0] == player &&
 		board[1][1] == player &&
 		board[2][2] == player)
@@ -31,7 +33,7 @@ bool Check::CheckWin(int board[3][3],int player)
 		return true;
 	}
 
-	// ‰Eã ¨ ¶‰º
+	// å³ä¸Š â†’ å·¦ä¸‹
 	if (board[0][2] == player &&
 		board[1][1] == player &&
 		board[2][0] == player)
@@ -42,14 +44,15 @@ bool Check::CheckWin(int board[3][3],int player)
 	return false;
 }
 
+//	æ–‡å­—ã§åˆ¤å®šã‚’ãŸã—ã‹ã‚ã‚‹
 void Check::Draw()
 {
 	SetFontSize(40);
-	DrawString(500, 500, "ƒvƒŒƒCƒ„[‚»‚ë‚Á‚½‚Ë", GetColor(255, 255, 0));
+	DrawString(500, 500, "ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãã‚ã£ãŸã­", GetColor(255, 255, 0));
 }
 
 void Check::Draw2()
 {
 	SetFontSize(40);
-	DrawString(500, 500, "NPC‚»‚ë‚Á‚½‚Ë", GetColor(255, 255, 0));
+	DrawString(500, 500, "NPCãã‚ã£ãŸã­", GetColor(255, 255, 0));
 }

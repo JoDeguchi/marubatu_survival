@@ -1,11 +1,19 @@
-#pragma once
-#include "board.h"
+﻿#pragma once
 #include "Dxlib.h"
+#include "Marubatu.h"
 
-class Check
+/// <summary>
+/// 丸ばつそろったかどうかを判定するクラス
+/// </summary>
+class Check:public Batu
 {
 	Board board;
+	Maru maru[3][3];
+	Batu batu[3][3];
 public:
+
+	bool playerwinner = false;
+	bool npcwinner = false;
 
 	bool CheckWin(int board[3][3],int player);
 	void Draw();
