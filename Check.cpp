@@ -56,3 +56,10 @@ void Check::Draw2()
 	SetFontSize(40);
 	DrawString(500, 500, "NPCそろったね", GetColor(255, 255, 0));
 }
+
+void Check::Draw3()
+{
+	SetFontSize(40);
+	DrawString(500, 500, "ひきわけ", GetColor(255, 255, 0));
+}
+

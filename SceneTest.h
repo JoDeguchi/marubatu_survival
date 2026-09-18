@@ -10,6 +10,7 @@
 #include "Mouse.h"
 #include "UI.h"
 #include "Check.h"
+#include "Turn.h"
 
 /// <summary>
 /// テスト（シーン）
@@ -40,9 +41,6 @@ class SceneTest : public SceneBase
 	Maru maru[3][3];
 	Batu batu[3][3];	
 
-	//	ターン
-	int turn = 0;
-
 	//	マウス
 	Mouse mouse;
 
@@ -52,6 +50,8 @@ class SceneTest : public SceneBase
 
 	//	勝利判定
 	Check check;
+
+	Turn turn;
 
 	float timer = 0.0f;
 

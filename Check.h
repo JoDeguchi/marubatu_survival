@@ -12,8 +12,9 @@ class Check:public Batu
 	Batu batu[3][3];
 public:
 
-	bool playerwinner = false;
-	bool npcwinner = false;
+	bool playerwinner = false;	//	プレイヤーの勝利
+	bool npcwinner = false;		//	NPCの勝利
+	bool draw = false;			//	引き分け
 
 	bool CheckWin(int board[3][3],int player);
 	void Draw();

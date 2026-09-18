@@ -1,6 +1,10 @@
 ﻿#include "SceneTest.h"
 #include "DxLib.h"
 
+#define LINE_BASE_X 550
+#define LINE_BASE_Y 330
+
+
 /// <summary>
 /// 初期化
 /// </summary>
@@ -11,23 +15,31 @@ void SceneTest::Init()
 	check.npcwinner = false;
 	//	時間０に
 	timer = 0;
-	// 横線
-	line_w[0].SetLinePos(430, 333, 830, 333);
-	line_w[1].SetLinePos(430, 466, 830, 466);
-
-	// 縦線
-	line_h[0].SetLinePos(563, 200, 563, 600);
-	line_h[1].SetLinePos(696, 200, 696, 600);
 
 	//	盤目の位置
-	board = Board("", 430, 200);
+	board = Board("", 550, 330);
 
+	//	線の基準を決める
+	int base_x = LINE_BASE_X;
+	int base_y = LINE_BASE_Y;
+	int size = 400;
+	int cell = size / 3;	//	1マス分
+
+	// 横線
+	line_w[0].SetLinePos(base_x , base_y + cell     , base_x + size , base_y + cell);
+	line_w[1].SetLinePos(base_x , base_y + cell * 2 , base_x + size , base_y + cell * 2);
+
+	// 縦線
+	line_h[0].SetLinePos(base_x + cell     , base_y , base_x + cell     , base_y + size);
+	line_h[1].SetLinePos(base_x + cell * 2 , base_y , base_x + cell * 2 , base_y + size);
+
+	
 	//	丸とバツ　マスごとに初期化
 	for (int row = 0; row < 3; row++){
 		for (int col = 0; col < 3; col++){
 			//	１マス１３３pxとして
-			int x = 430 + col * 133;
-			int y = 200 + row * 133;
+			int x = base_x + col * 133;
+			int y = base_y + row * 133;
 
 			maru[row][col] = Maru("maru.png", x, y);
 			batu[row][col] = Batu("batu.png", x, y);
@@ -57,27 +69,12 @@ void SceneTest::Update()
 	//	マウスクリックされたら、まるばつ置くための処理（ターン分け交互）
 	if (mouse.ClicPress())
 	{
-		int x = mouse.GetX() - 430;
-		int y = mouse.GetY() - 200;
+		//	マウス座標
+		int mx = mouse.GetX() - LINE_BASE_X;
+		int my = mouse.GetY() - LINE_BASE_Y;
 
-		if (x >= 0 && x < 400 && y >= 0 && y < 400) {
-			int col = x / (400 / 3);
-			int row = y / (400 / 3);
-
-			//	◎罰交互
-			if (board.board_size[row][col] == 0) {
-				//	ターン０のときは１（〇）を
-				if (turn == 0) {
-					board.board_size[row][col] = 1;	// 〇
-					turn = 1;
-				}
-				//	ターン１のときは２（×）を
-				else {
-					board.board_size[row][col] = 2;	// ×
-					turn = 0;
-				}
-			}
-		}
+		turn.TurnChange(board,mx, my);
+		
 	}
 
 	//	そろったら勝ったと判定　それぞれ
@@ -90,6 +87,11 @@ void SceneTest::Update()
 	{
 		timer++;
 		check.npcwinner = true;
+	}
+	//	ひきわけの場合
+	else 
+	{
+		check.draw = true;
 	}
 
 	//	時間を止める

@@ -157,6 +157,7 @@
     <ClInclude Include="SceneOp.h" />
     <ClInclude Include="SceneTest.h" />
     <ClInclude Include="Board.h" />
+    <ClInclude Include="Turn.h" />
     <ClInclude Include="UI.h" />
   </ItemGroup>
   <ItemGroup>
