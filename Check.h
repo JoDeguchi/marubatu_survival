@@ -15,8 +15,10 @@ public:
 	bool playerwinner = false;	//	プレイヤーの勝利
 	bool npcwinner = false;		//	NPCの勝利
 	bool draw = false;			//	引き分け
+	bool full;			//	フルか
 
 	bool CheckWin(int board[3][3],int player);
 	void Draw();
 	void Draw2();
+	void Draw3();
 };

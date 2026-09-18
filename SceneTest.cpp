@@ -91,7 +91,26 @@ void SceneTest::Update()
 	//	ひきわけの場合
 	else 
 	{
-		check.draw = true;
+		// 盤面が全部埋まっているか確認
+		 check.full = true;
+
+		for (int row = 0; row < 3; row++)
+		{
+			for (int col = 0; col < 3; col++)
+			{
+				if (board.board_size[row][col] == 0)
+				{
+					check.full = false;
+				}
+			}
+		}
+
+		// 全部埋まっていたら引き分け
+		if (check.full)
+		{
+			check.draw = true;
+			board.Drawflag(check.draw);
+		}
 	}
 
 	//	時間を止める
@@ -149,6 +168,9 @@ void SceneTest::Draw()
 	}
 	else if (check.CheckWin(board.board_size, 2)){
 		check.Draw2();
+	}
+	else {
+		check.Draw3();
 	}
 }
 

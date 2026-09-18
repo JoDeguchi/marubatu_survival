@@ -60,6 +60,7 @@ void Check::Draw2()
 void Check::Draw3()
 {
 	SetFontSize(40);
-	DrawString(500, 500, "ひきわけ", GetColor(255, 255, 0));
+	if(full)	DrawString(500, 500, "ひきわけ", GetColor(255, 255, 0));
+	
 }
 
