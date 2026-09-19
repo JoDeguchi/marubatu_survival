@@ -57,6 +57,14 @@ public:
 		// 背景を描画
 		DrawGraph(0, 0, this->image_hnd, false);	
 	}
+
+	/// <summary>
+	/// 画像ハンドルを取得
+	/// </summary>
+	int GetImageHandle()
+	{
+		return this->image_hnd;
+	}
 };
 
 

@@ -22,8 +22,12 @@ void DrawButton(int mouseX, int mouseY,
 }
 
 void SceneOp::Init()
-{   // ”wŒi‰æ‘œ
+{   
+	// ”wŒi‰æ‘œ
 	this->bg0.Load_image("background.png");
+	// ƒ}ƒXƒRƒbƒgƒLƒƒƒ‰‚ğ“Ç‚İ‚Ş
+	this->mascot.Load_image("aikon.png");
+	this->mascot2.Load_image("aikon2.png");
 }
 
 void SceneOp::Input()
@@ -53,6 +57,10 @@ void SceneOp::Draw()
 {
 	// ”wŒi
 	this->bg0.Draw();
+
+	// ƒ}ƒXƒRƒbƒgƒLƒƒƒ‰‚ğ•`‰æ
+	DrawGraph(200, 500, this->mascot.GetImageHandle(), TRUE);
+	DrawGraph(1000, 500, this->mascot2.GetImageHandle(), TRUE);
 
 	// ƒ}ƒEƒXÀ•W
 	int mouseX = this->mouse.GetX();
