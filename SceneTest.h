@@ -92,4 +92,5 @@ public:
 	/// </summary>
 	void Sound_play() override;
 
+	void ResetMaruBatu();
 };

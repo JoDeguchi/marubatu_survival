@@ -63,6 +63,33 @@ void SceneTest::Input()
 }
 
 /// <summary>
+/// 丸と罰をリセット
+/// </summary>
+void SceneTest::ResetMaruBatu()
+{
+	int base_x = LINE_BASE_X;
+	int base_y = LINE_BASE_Y;
+
+	// 盤面データをクリア
+	for (int row = 0; row < 3; row++){
+		for (int col = 0; col < 3; col++){
+			board.board_size[row][col] = 0;
+		}
+	}
+
+	// 丸と罰を再初期化
+	for (int row = 0; row < 3; row++){
+		for (int col = 0; col < 3; col++){
+			int x = base_x + col * 133;
+			int y = base_y + row * 133;
+
+			maru[row][col] = Maru("maru.png", x, y);
+			batu[row][col] = Batu("batu.png", x, y);
+		}
+	}
+}
+
+/// <summary>
 /// 更新処理
 /// </summary>
 void SceneTest::Update()
@@ -112,8 +139,12 @@ void SceneTest::Update()
 			check.draw = true;
 			board.Drawflag(check.draw);
 
-			board.SetPos((550-133),(330-133));
+			//	丸と罰をリセット
+			this->ResetMaruBatu();
 
+			
+			board.SetPos((550-133),(330-133));
+		
 			//	線の基準を決める
 			int base_x = LINE_BASE_X-133;
 			int base_y = LINE_BASE_Y-133;
