@@ -13,6 +13,7 @@ void SceneTest::Init()
 	//	プレイヤーとNPCが勝ったフラグをオフに
 	check.playerwinner = false;
 	check.npcwinner = false;
+	check.draw = false;
 	//	時間０に
 	timer = 0;
 
@@ -110,6 +111,8 @@ void SceneTest::Update()
 		{
 			check.draw = true;
 			board.Drawflag(check.draw);
+
+			this->Init();
 			board.SetPos((550-133),(330-133));
 
 			//	線の基準を決める
@@ -139,15 +142,13 @@ void SceneTest::Update()
 					base_y + size
 				);
 			}
-
-
 		}
 	}
 
 	//	時間を止める
 	if (timer > 180)	timer = 180;
 	
-	//	エンディングへ
+	//	勝利時はエンディングへ
 	if (timer == 180){
 		this->game_ptr->ChageScene(2);
 		check.playerwinner = false;
