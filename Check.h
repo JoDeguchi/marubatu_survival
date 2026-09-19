@@ -8,8 +8,7 @@
 class Check:public Batu
 {
 	Board board;
-	Maru maru[3][3];
-	Batu batu[3][3];
+
 public:
 
 	bool playerwinner = false;	//	プレイヤーの勝利
@@ -17,7 +16,11 @@ public:
 	bool draw = false;			//	引き分け
 	bool full;			//	フルか
 
+	//	3マスのときの勝利パターン
 	bool CheckWin(int board[3][3],int player);
+	//	５マスのときの勝利パターン
+	bool CheckWin2(int board[5][5], int player);
+
 	void Draw();
 	void Draw2();
 	void Draw3();

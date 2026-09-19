@@ -44,6 +44,58 @@ bool Check::CheckWin(int board[3][3],int player)
 	return false;
 }
 
+
+// 勝ったかどうか 5マス用
+bool Check::CheckWin2(int board[5][5], int player)
+{
+	// 横が5つそろったとき
+	for (int row = 0; row < 5; row++)
+	{
+		if (board[row][0] == player &&
+			board[row][1] == player &&
+			board[row][2] == player &&
+			board[row][3] == player &&
+			board[row][4] == player)
+		{
+			return true;
+		}
+	}
+
+	// 縦が5つそろったとき
+	for (int col = 0; col < 5; col++)
+	{
+		if (board[0][col] == player &&
+			board[1][col] == player &&
+			board[2][col] == player &&
+			board[3][col] == player &&
+			board[4][col] == player)
+		{
+			return true;
+		}
+	}
+
+	// 左上 → 右下
+	if (board[0][0] == player &&
+		board[1][1] == player &&
+		board[2][2] == player &&
+		board[3][3] == player &&
+		board[4][4] == player)
+	{
+		return true;
+	}
+
+	// 右上 → 左下
+	if (board[0][4] == player &&
+		board[1][3] == player &&
+		board[2][2] == player &&
+		board[3][1] == player &&
+		board[4][0] == player)
+	{
+		return true;
+	}
+
+	return false;
+}
 //	文字で判定をたしかめる
 void Check::Draw()
 {
