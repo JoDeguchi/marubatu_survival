@@ -22,20 +22,20 @@ void DrawButton(int mouseX, int mouseY,
 }
 
 void SceneOp::Init()
-{
+{   // 背景画像
 	this->bg0.Load_image("background.png");
 }
 
 void SceneOp::Input()
 {
-	this->key_state.Read();
-	this->mouse.Read();
+	this->key_state.Read(); // キーボード
+	this->mouse.Read();     // マウス
 }
 
 void SceneOp::Update()
-{
+{   // クリックしたら
 	if (this->mouse.ClicPress())
-	{
+	{   // マウス座標取得
 		int x = this->mouse.GetX();
 		int y = this->mouse.GetY();
 
