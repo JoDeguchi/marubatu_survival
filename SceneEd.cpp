@@ -66,9 +66,22 @@ void SceneEd::Draw()
 	// 背景0を描画
 	this->bg0.Draw();
 
-
 	SetFontSize(64);
-	DrawString(500, 100, "○○の勝ち", GetColor(255, 255, 255));
+	
+	// ゲームの勝利情報を取得
+	Check& check_data = this->game_ptr->GetCheckData();
+	
+	// 勝者を判定して文字列を表示
+	if (check_data.playerwinner)
+	{
+		DrawString(500, 100, "○の勝ち", GetColor(255, 255, 255));
+	}
+	else if (check_data.npcwinner)
+	{
+		DrawString(500, 100, "×の勝ち", GetColor(255, 255, 255));
+	}
+	
+	
 	DrawString(300, 300, "タイトルに戻る", GetColor(255, 255, 255));
 	DrawString(300, 400, "ゲーム終了", GetColor(255, 255, 255));
 }
