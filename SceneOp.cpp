@@ -2,6 +2,7 @@
 #include "DxLib.h"
 
 // ボタン描画
+// マウス座標、ボタン座標、ボタン横幅
 void DrawButton(int mouseX, int mouseY,
 	int x, int y, int w, int h,
 	const char* text, int fontSize)
@@ -10,6 +11,7 @@ void DrawButton(int mouseX, int mouseY,
 
 	int color = GetColor(255, 255, 255);
 
+	// マウスが上にあるか判定
 	if (mouseX >= x && mouseX <= x + w &&
 		mouseY >= y && mouseY <= y + h)
 	{
