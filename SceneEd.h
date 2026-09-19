@@ -57,5 +57,4 @@ public:
 	/// ‰¹ºÄ¶ˆ—
 	/// </summary>
 	void Sound_play() override {};
-
 };

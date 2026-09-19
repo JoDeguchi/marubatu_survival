@@ -180,12 +180,15 @@ void SceneTest::Update()
 	
 	//	勝利時はエンディングへ
 	if (timer == 180){
+		// 勝利情報をゲームに保存
+		this->game_ptr->GetCheckData().playerwinner = check.playerwinner;
+		this->game_ptr->GetCheckData().npcwinner = check.npcwinner;
+		
 		this->game_ptr->ChageScene(2);
 		check.playerwinner = false;
 		check.npcwinner = false;
 		timer = 0;
 	}
-	
 }
 
 /// <summary>
