@@ -49,6 +49,7 @@ public:
 		this->pos_y = arg_y;
 	}
 
+	//	位置
 	void SetPos(int arg_x, int arg_y)
 	{
 		pos_x = arg_x;
@@ -74,13 +75,13 @@ public:
 		if (arg_draw) {
 			current_w = 5;
 			current_h = 5;
-			extend = 533;
+			extend = 666;
 			
 		}
 		else{
 			current_w = 3;
 			current_h = 3;
-			extend= 400;
+			extend= 533;
 		}
 	}
 
