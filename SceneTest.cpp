@@ -110,6 +110,37 @@ void SceneTest::Update()
 		{
 			check.draw = true;
 			board.Drawflag(check.draw);
+			board.SetPos((550-133),(330-133));
+
+			//	線の基準を決める
+			int base_x = LINE_BASE_X-133;
+			int base_y = LINE_BASE_Y-133;
+			int size = 666;
+			int cell = size / 5;	//	1マス分
+
+			// 横線4本
+			for (int i = 0; i < 4; i++)
+			{
+				line_w[i].SetLinePos(
+					base_x,
+					base_y + cell * (i + 1),
+					base_x + size,
+					base_y + cell * (i + 1)
+				);
+			}
+
+			// 縦線4本
+			for (int i = 0; i < 4; i++)
+			{
+				line_h[i].SetLinePos(
+					base_x + cell * (i + 1),
+					base_y,
+					base_x + cell * (i + 1),
+					base_y + size
+				);
+			}
+
+
 		}
 	}
 
@@ -137,12 +168,25 @@ void SceneTest::Draw()
 	// スプライトの描画
 	this->board.Draw();
 
-	//	線の描画	
-	for(int i = 0; i < 2; i++)
-	{
-		line_w[i].Draw();
-		line_h[i].Draw();
+
+	if (check.draw) {
+		//	線の描画	
+		for (int i = 0; i < 4; i++)
+		{
+			line_w[i].Draw();
+			line_h[i].Draw();
+		}
 	}
+	else {
+		//	線の描画	
+		for (int i = 0; i < 2; i++)
+		{
+			line_w[i].Draw();
+			line_h[i].Draw();
+		}
+	}
+
+	
 	
 	//	丸とばつの描画
 	for (int row = 0; row < 3; row++){

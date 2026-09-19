@@ -34,8 +34,8 @@ class SceneTest : public SceneBase
 	Board board;
 
 	//	線のインスタンス
-	Line line_w[2];
-	Line line_h[2];
+	Line line_w[4];
+	Line line_h[4];
 
 	//	丸とバツのインスタンス
 	Maru maru[3][3];
