@@ -112,7 +112,6 @@ void SceneTest::Update()
 			check.draw = true;
 			board.Drawflag(check.draw);
 
-			this->Init();
 			board.SetPos((550-133),(330-133));
 
 			//	線の基準を決める
