@@ -96,13 +96,13 @@ void SceneOp::Draw()
 	// コンピューター対戦
 	int computerColor = GetColor(255, 255, 255);
 
-	if (mouseX >= 400 && mouseX <= 850 &&
+	if (mouseX >= 400 && mouseX <= 1020 &&
         mouseY >= 340 && mouseY <= 375)
 	{
 		computerColor = GetColor(255, 255, 0);
 	}
 
-	DrawString(400, 340,"コンピューター対戦（むずかしさ）",computerColor);
+	DrawString(400, 340,"コンピューター対戦     （むずかしさ）",computerColor);
 
 
 	// 難易度
@@ -110,36 +110,36 @@ void SceneOp::Draw()
 
 	int normalColor = GetColor(255, 255, 255);
 
-	if (mouseX >= 700 && mouseX <= 770 &&
+	if (mouseX >= 830 && mouseX <= 900 &&
 		mouseY >= 400 && mouseY <= 430)
 	{
 		normalColor = GetColor(255, 255, 0);
 	}
 
-	DrawString(700, 400, "ふつう", normalColor);
+	DrawString(830, 400, "ふつう", normalColor);
 
 	// むずかしい
 	int hardColor = GetColor(255, 255, 255);
 
-	if (mouseX >= 700 && mouseX <= 830 &&
+	if (mouseX >= 830 && mouseX <= 960 &&
 		mouseY >= 430 && mouseY <= 455)
 	{
 		hardColor = GetColor(255, 255, 0);
 	}
 
-	DrawString(700, 430, "むずかしい", hardColor);
+	DrawString(830, 430, "むずかしい", hardColor);
 
 
 	// げきむず
 	int veryHardColor = GetColor(255, 255, 255);
 
-	if (mouseX >= 700 && mouseX <= 800 &&
+	if (mouseX >= 830 && mouseX <= 930 &&
 		mouseY >= 460 && mouseY <= 485)
 	{
 		veryHardColor = GetColor(255, 255, 0);
 	}
 
-	DrawString(700, 460, "げきむず", veryHardColor);
+	DrawString(830, 460, "げきむず", veryHardColor);
 
 
 	// あそびかた
