@@ -59,7 +59,7 @@ void SceneOp::Draw()
 	this->bg0.Draw();
 
 	// マスコットキャラを描画
-	DrawGraph(200, 500, this->mascot.GetImageHandle(), TRUE);
+	DrawGraph(0, 500, this->mascot.GetImageHandle(), TRUE);
 	DrawGraph(1000, 500, this->mascot2.GetImageHandle(), TRUE);
 
 	// マウス座標
