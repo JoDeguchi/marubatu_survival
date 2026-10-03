@@ -19,6 +19,12 @@ class SceneEd : public SceneBase
 	// 背景クラスのインスタンス
 	Background bg0;
 
+	Background title_return;// タイトルに戻るUIの背景
+	Background once_again;// もう一度プレイするUIの背景
+	Background total_victory;// 〇勝ちUIの背景
+	Background decisive_victory;// ×勝ちUIの背景
+
+
 	// マウス
 	Mouse mouse;
 
