@@ -1,4 +1,5 @@
-﻿#include "SceneEd.h"
+﻿
+#include "SceneEd.h"
 
 #include "DxLib.h"
 #include <cstdlib> // exit
@@ -9,12 +10,14 @@ void SceneEd::Init()
 	// 背景画像の読込
 	this->bg0.Load_image("background.png");
 
-	// マウス状態をリセット
-	this->mouse.Reset();
-	this->title_return.Load_image("title_return.png");
-	this->once_again.Load_image("once_again.png");
-	this->total_victory.Load_image("total_victory.png");
-	this->decisive_victory.Load_image("decisive_victory.png");
+	
+	this->mouse.Reset();// マウス状態をリセット
+
+	// UI画像の読込
+	this->title_return.Load_image("title_return.png");// タイトルに戻るUIの背景
+	this->once_again.Load_image("once_again.png");// もう一度プレイするUIの背景
+	this->total_victory.Load_image("total_victory.png");// 〇勝ちUIの背景
+	this->decisive_victory.Load_image("decisive_victory.png");// ×勝ちUIの背景
 }
 
 static void DrawButtonSimple(int mouseX, int mouseY,
@@ -90,23 +93,26 @@ void SceneEd::Draw()
 {
 	// 背景0を描画
 	this->bg0.Draw();
+
+	// 常時表示するUI（タイトルに戻る・もう一度プレイ）
 	this->title_return.Draw();
 	this->once_again.Draw();
-	this->total_victory.Draw();
-	this->decisive_victory.Draw();
 
 	// ゲームの勝利情報を取得
 	Check& check_data = this->game_ptr->GetCheckData();
 
-	// 勝者を判定して文字列を表示
+	// 勝者に応じて該当の画像のみを表示する
 	if (check_data.playerwinner)
 	{
-		DrawString(500, 100, "○の勝ち", GetColor(255, 255, 255));
+		// プレイヤー（〇）が勝利したときに 〇用画像を表示
+		this->total_victory.Draw();
 	}
 	else if (check_data.npcwinner)
 	{
-		DrawString(500, 100, "×の勝ち", GetColor(255, 255, 255));
+		// NPC（×）が勝利したときに ×用画像を表示
+		this->decisive_victory.Draw();
 	}
+	// 引き分けなど勝敗がない場合は勝敗画像は表示しない
 
 	// マウス座標
 	int mouseX = this->mouse.GetX();
