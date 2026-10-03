@@ -89,9 +89,6 @@ void SceneOp::Draw()
 	// ボタン
 	// 文字列描画
 	DrawButton(mouseX, mouseY,400, 300, 250, 35, "オフライン対戦", 32);
-	DrawButton(mouseX, mouseY,400, 340, 620, 35,"コンピューター対戦     （むずかしさ）", 32);
-	DrawButton(mouseX, mouseY,830, 400, 70, 30, "ふつう", 25);
-	DrawButton(mouseX, mouseY,830, 430, 130, 25, "むずかしい", 25);
-	DrawButton(mouseX, mouseY,830, 460, 100, 25, "げきむず", 25);
+	
 	DrawButton(mouseX, mouseY,1000, 600, 100, 25, "あそびかた", 22);
 }
