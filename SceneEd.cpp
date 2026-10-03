@@ -10,6 +10,24 @@ void SceneEd::Init()
 	this->bg0.Load_image("background.png");
 }
 
+static void DrawButtonSimple(int mouseX, int mouseY,
+	int x, int y, int w, int h,
+	const char* text, int fontSize)
+{
+	SetFontSize(fontSize);
+
+	int color = GetColor(255, 255, 255);
+
+	// マウスが上にあるか判定（領域は x..x+w, y..y+h）
+	if (mouseX >= x && mouseX <= x + w &&
+		mouseY >= y && mouseY <= y + h)
+	{
+		color = GetColor(255, 255, 0);
+	}
+
+	DrawString(x, y, text, color);
+}
+
 /// <summary>
 /// 入力処理
 /// </summary>
@@ -66,11 +84,11 @@ void SceneEd::Draw()
 	// 背景0を描画
 	this->bg0.Draw();
 
-	SetFontSize(64);
 	
+
 	// ゲームの勝利情報を取得
 	Check& check_data = this->game_ptr->GetCheckData();
-	
+
 	// 勝者を判定して文字列を表示
 	if (check_data.playerwinner)
 	{
@@ -80,8 +98,14 @@ void SceneEd::Draw()
 	{
 		DrawString(500, 100, "×の勝ち", GetColor(255, 255, 255));
 	}
-	
-	
-	DrawString(300, 300, "タイトルに戻る", GetColor(255, 255, 255));
-	DrawString(300, 400, "ゲーム終了", GetColor(255, 255, 255));
+
+	// マウス座標
+	int mouseX = this->mouse.GetX();
+	int mouseY = this->mouse.GetY();
+
+	// 「タイトルに戻る」
+	DrawButtonSimple(mouseX, mouseY, 300, 300, 500, 60, "タイトルに戻る", 64);
+
+	// 「ゲーム終了」
+	DrawButtonSimple(mouseX, mouseY, 300, 400, 500, 60, "ゲーム終了", 64);
 }
