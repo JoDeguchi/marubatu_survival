@@ -396,6 +396,43 @@ void SceneTest::Draw()
 			check.Draw2();
 		}
 	}
+
+	// ターン表示（勝敗が決まっていない場合のみ)
+	if (!decide) {
+		SetFontSize(40);
+		
+		// turn クラスのターン番号を取得するか、現在のターンを判定する必要があります
+		// ここでは簡易的に、盤面の埋まり具合でターンを判定します
+		int count = 0;
+		if (!check.draw) {
+			// 3×3のターン計算
+			for (int row = 0; row < 3; row++){
+				for (int col = 0; col < 3; col++){
+					if (board.board_size[row][col] != 0) {
+						count++;
+					}
+				}
+			}
+		}
+		else {
+			// 5×5のターン計算
+			for (int row = 0; row < 5; row++){
+				for (int col = 0; col < 5; col++){
+					if (board.board_size[row][col] != 0) {
+						count++;
+					}
+				}
+			}
+		}
+
+		// count が偶数なら丸の番、奇数なら×の番
+		if (count % 2 == 0) {
+			DrawString(600, 150, "今は丸の番です", GetColor(255, 255, 0));
+		}
+		else {
+			DrawString(600, 150, "今は×の番です", GetColor(255, 255, 0));
+		}
+	}
 }
 
 /// <summary>
