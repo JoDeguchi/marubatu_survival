@@ -15,6 +15,8 @@ void SceneTest::Init()
 	check.draw = false;
 	//	時間0に
 	timer = 0;
+	//	勝敗決定フラグをオフに
+	decide = false;
 
 	//	盤目の位置
 	board = Board("", 550, 330);
@@ -66,7 +68,7 @@ void SceneTest::Input()
 }
 
 /// <summary>
-/// 丸と×をリセット
+/// 丸と×をリセット（5×5用）
 /// </summary>
 void SceneTest::ResetMaruBatu()
 {
@@ -94,12 +96,47 @@ void SceneTest::ResetMaruBatu()
 }
 
 /// <summary>
+/// 5×5をリセット（引き分け時）
+/// </summary>
+void SceneTest::Reset5x5()
+{
+	int base_x = LINE_BASE_X;
+	int base_y = LINE_BASE_Y;
+
+	// 盤面データをクリア（5×5全て）
+	for (int row = 0; row < 5; row++){
+		for (int col = 0; col < 5; col++){
+			board.board_size[row][col] = 0;
+		}
+	}
+
+	// 丸と×を再初期化（5×5）
+	int cell_size = 666 / 5;	// 133.2px
+	for (int row = 0; row < 5; row++){
+		for (int col = 0; col < 5; col++){
+			int x = base_x - 133 + col * cell_size;
+			int y = base_y - 133 + row * cell_size;
+
+			maru_5x5[row][col] = Maru("maru.png", x+8, y+5);
+			batu_5x5[row][col] = Batu("batu.png", x-15, y-15);
+		}
+	}
+
+	// フラグをリセット
+	check.playerwinner = false;
+	check.npcwinner = false;
+	check.full = false;
+	decide = false;
+	timer = 0;
+}
+
+/// <summary>
 /// 更新処理
 /// </summary>
 void SceneTest::Update()
 {
-	//	マウスクリックされたら、丸と×を置くための処理（ターン分け交互）
-	if (mouse.ClicPress())
+	//	勝敗が決まっていない場合のみマウスクリック処理
+	if (!decide && mouse.ClicPress())
 	{
 		//	マウス座標
 		int mx = mouse.GetX() - LINE_BASE_X;
@@ -132,11 +169,13 @@ void SceneTest::Update()
 		{
 			timer++;
 			check.playerwinner = true;
+			decide = true;	// 勝敗決定
 		}
 		else if (check.CheckWin(board_3x3, 2))
 		{
 			timer++;
 			check.npcwinner = true;
+			decide = true;	// 勝敗決定
 		}
 		//	ひきわけの場合
 		else 
@@ -160,6 +199,7 @@ void SceneTest::Update()
 			{
 				check.draw = true;
 				board.Drawflag(check.draw);
+				decide = false;	// 5×5では置き続けられる
 
 				//	丸と×をリセット
 				this->ResetMaruBatu();
@@ -209,11 +249,36 @@ void SceneTest::Update()
 		{
 			timer++;
 			check.playerwinner = true;
+			decide = true;	// 勝敗決定
 		}
 		else if (check.CheckWin2(board_5x5, 2))
 		{
 			timer++;
 			check.npcwinner = true;
+			decide = true;	// 勝敗決定
+		}
+		//	5×5での引き分けの場合
+		else
+		{
+			// 盤面が全部埋まっているか確認
+			check.full = true;
+
+			for (int row = 0; row < 5; row++)
+			{
+				for (int col = 0; col < 5; col++)
+				{
+					if (board.board_size[row][col] == 0)
+					{
+						check.full = false;
+					}
+				}
+			}
+
+			// 全部埋まっていたら5×5をリセット
+			if (check.full)
+			{
+				this->Reset5x5();
+			}
 		}
 	}
 
@@ -230,6 +295,7 @@ void SceneTest::Update()
 		check.playerwinner = false;
 		check.npcwinner = false;
 		timer = 0;
+		decide = false;
 	}
 }
 
