@@ -5,6 +5,10 @@ void Rule::Init()
 {
 	// 背景画像
 	this->bg0.Load_image("background.png");
+
+	// マスコットキャラを読み込む
+	this->mascot.Load_image("aikon.png");
+	this->mascot2.Load_image("aikon2.png");
 }
 
 void Rule::Input()
@@ -45,12 +49,18 @@ void Rule::Draw()
 	SetFontSize(64);
 	DrawString(400, 50, "あそびかた", GetColor(255, 255, 255));
 
+	// マスコットキャラを描画
+	DrawGraph(0, 500, this->mascot.GetImageHandle(), TRUE);
+	DrawGraph(1000, 500, this->mascot2.GetImageHandle(), TRUE);
+
 	// ルール説明テキスト
 	SetFontSize(32);
 	DrawString(100, 150, "ゲームのルール", GetColor(255, 255, 255));
 	DrawString(100, 200, "・3×3のマスにて〇と×を交互に置きます", GetColor(255, 255, 255));
 	DrawString(100, 240, "・先に自分の記号を3つそろえたら勝ちです", GetColor(255, 255, 255));
 	DrawString(100, 280, "・全てのマスが埋まったら引き分けです", GetColor(255, 255, 255));
+	DrawString(100, 320, "・引き分けの場合5Ｘ5に切り替わり先に4マス揃えたら勝ちです", GetColor(255, 255, 255));
+
 
 	// 戻るボタン
 	SetFontSize(25);

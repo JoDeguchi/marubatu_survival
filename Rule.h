@@ -24,6 +24,10 @@ class Rule : public SceneBase
 	// 背景クラスのインスタンス
 	Background bg0;
 
+	// マスコットキャラクターのインスタンス
+	Background mascot;
+	Background mascot2;
+
 	// マウスのインスタンス
 	Mouse mouse;
 
