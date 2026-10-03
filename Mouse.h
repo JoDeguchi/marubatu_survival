@@ -6,8 +6,9 @@ class Mouse
 	int mouse_x = 0;
 	int mouse_y = 0;
 
-	//	マウスが押された瞬間
+	//	マウスがクリックされたフラグ
 	bool clic_down = false;
+	bool clic_up = false;
 	bool mouse_frame = false;
 
 public:
@@ -15,8 +16,11 @@ public:
 	//	読み込み
 	void Read();
 
-	//	結果を返す
+	//	押された瞬間を返す
 	bool ClicPress() const;
+
+	//	離された瞬間を返す
+	bool ClicRelease() const;
 
 	/// <summary>
 	/// マウスX座標
@@ -28,5 +32,8 @@ public:
 	/// </summary>
 	int GetY() const;
 
-		
+	/// <summary>
+	/// マウス状態をリセット
+	/// </summary>
+	void Reset();
 };

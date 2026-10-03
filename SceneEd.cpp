@@ -8,6 +8,9 @@ void SceneEd::Init()
 {
 	// 背景画像の読込
 	this->bg0.Load_image("background.png");
+
+	// マウス状態をリセット
+	this->mouse.Reset();
 	this->title_return.Load_image("title_return.png");
 	this->once_again.Load_image("once_again.png");
 	this->total_victory.Load_image("total_victory.png");

@@ -9,6 +9,9 @@ void Rule::Init()
 	// マスコットキャラを読み込む
 	this->mascot.Load_image("aikon.png");
 	this->mascot2.Load_image("aikon2.png");
+
+	// マウス状態をリセット
+	this->mouse.Reset();
 }
 
 void Rule::Input()
@@ -19,8 +22,8 @@ void Rule::Input()
 
 void Rule::Update()
 {
-	// クリックしたら
-	if (this->mouse.ClicPress())
+	// マウスが離された時だけ
+	if (this->mouse.ClicRelease())
 	{
 		// マウス座標取得
 		int x = this->mouse.GetX();
@@ -61,9 +64,6 @@ void Rule::Draw()
 	DrawString(100, 280, "・全てのマスが埋まったら引き分けです", GetColor(255, 255, 255));
 	DrawString(100, 320, "・引き分けの場合5Ｘ5に切り替わります", GetColor(255, 255, 255));
 	DrawString(100, 360, "・切り替わり後4マスそろえたほうが勝ちです", GetColor(255, 255, 255));
-
-
-
 
 	// 戻るボタン
 	SetFontSize(25);

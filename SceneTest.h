@@ -59,6 +59,9 @@ class SceneTest : public SceneBase
 
 	float timer = 0.0f;
 
+	//	勝敗決まったら
+	bool decide = false;
+
 public:
 
 	/// <summary>
@@ -96,5 +99,13 @@ public:
 	/// </summary>
 	void Sound_play() override;
 
+	/// <summary>
+	/// 丸と×をリセット（5×5用）
+	/// </summary>
 	void ResetMaruBatu();
+
+	/// <summary>
+	/// 5×5をリセット（引き分け時）
+	/// </summary>
+	void Reset5x5();
 };

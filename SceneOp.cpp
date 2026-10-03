@@ -28,6 +28,9 @@ void SceneOp::Init()
 	// マスコットキャラを読み込む
 	this->mascot.Load_image("aikon.png");
 	this->mascot2.Load_image("aikon2.png");
+
+	// マウス状態をリセット
+	this->mouse.Reset();
 }
 
 void SceneOp::Input()
@@ -37,12 +40,14 @@ void SceneOp::Input()
 }
 
 void SceneOp::Update()
-{   // クリックしたら
-	if (this->mouse.ClicPress())
-	{   // マウス座標取得
-		int x = this->mouse.GetX();
-		int y = this->mouse.GetY();
+{
+	// マウス座標取得
+	int x = this->mouse.GetX();
+	int y = this->mouse.GetY();
 
+	// クリック時の判定（押された瞬間）
+	if (this->mouse.ClicPress())
+	{
 		// オフライン対戦
 		if (x >= 400 && x <= 650 &&
 			y >= 300 && y <= 335)
@@ -50,17 +55,17 @@ void SceneOp::Update()
 			this->game_ptr->ChageScene(1);
 			return;
 		}
+	}
 
-		//遊び方
+	// あそびかた（離された瞬間のみ）
+	if (this->mouse.ClicRelease())
+	{
 		if (x >= 1000 && x <= 1100 &&
 			y >= 600 && y <= 625)
 		{
 			this->game_ptr->ChageScene(3);
 			return;
 		}
-
-
-
 	}
 }
 
@@ -84,10 +89,6 @@ void SceneOp::Draw()
 	// ボタン
 	// 文字列描画
 	DrawButton(mouseX, mouseY,400, 300, 250, 35, "オフライン対戦", 32);
-	DrawButton(mouseX, mouseY,400, 340, 620, 35,"コンピューター対戦     （むずかしさ）", 32);
-	DrawButton(mouseX, mouseY,830, 400, 70, 30, "ふつう", 25);
-	DrawButton(mouseX, mouseY,830, 430, 130, 25, "むずかしい", 25);
-	DrawButton(mouseX, mouseY,830, 460, 100, 25, "げきむず", 25);
+	
 	DrawButton(mouseX, mouseY,1000, 600, 100, 25, "あそびかた", 22);
-
 }
