@@ -55,7 +55,7 @@ public:
 	void Draw()
 	{
 		// 背景を描画
-		DrawGraph(0, 0, this->image_hnd, false);	
+		DrawGraph(0, 0, this->image_hnd, true);	
 	}
 
 	/// <summary>
