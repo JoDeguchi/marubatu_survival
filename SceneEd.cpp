@@ -8,6 +8,10 @@ void SceneEd::Init()
 {
 	// 背景画像の読込
 	this->bg0.Load_image("background.png");
+	this->title_return.Load_image("title_return.png");
+	this->once_again.Load_image("once_again.png");
+	this->total_victory.Load_image("total_victory.png");
+	this->decisive_victory.Load_image("decisive_victory.png");
 }
 
 static void DrawButtonSimple(int mouseX, int mouseY,
@@ -83,8 +87,10 @@ void SceneEd::Draw()
 {
 	// 背景0を描画
 	this->bg0.Draw();
-
-	
+	this->title_return.Draw();
+	this->once_again.Draw();
+	this->total_victory.Draw();
+	this->decisive_victory.Draw();
 
 	// ゲームの勝利情報を取得
 	Check& check_data = this->game_ptr->GetCheckData();
