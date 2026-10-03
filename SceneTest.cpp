@@ -40,8 +40,8 @@ void SceneTest::Init()
 			int x = base_x + col * 133;
 			int y = base_y + row * 133;
 
-			maru[row][col] = Maru("maru.png", x, y);
-			batu[row][col] = Batu("batu.png", x, y);
+			maru[row][col] = Maru("maru.png", x+8, y+5);
+			batu[row][col] = Batu("batu.png", x-15, y-15);
 		}
 	}
 
@@ -87,8 +87,8 @@ void SceneTest::ResetMaruBatu()
 			int x = base_x - 133 + col * cell_size;
 			int y = base_y - 133 + row * cell_size;
 
-			maru_5x5[row][col] = Maru("maru.png", x, y);
-			batu_5x5[row][col] = Batu("batu.png", x, y);
+			maru_5x5[row][col] = Maru("maru.png", x+8, y+5);
+			batu_5x5[row][col] = Batu("batu.png", x-15, y-15);
 		}
 	}
 }
