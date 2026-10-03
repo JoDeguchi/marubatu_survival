@@ -51,6 +51,9 @@ void SceneTest::Init()
 
 	//背景画像
 	this->bg0 = Background("kokuban.png");
+
+	// マウス状態をリセット
+	this->mouse.Reset();
 }
 
 /// <summary>

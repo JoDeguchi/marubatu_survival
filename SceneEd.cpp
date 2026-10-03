@@ -8,6 +8,9 @@ void SceneEd::Init()
 {
 	// 背景画像の読込
 	this->bg0.Load_image("background.png");
+
+	// マウス状態をリセット
+	this->mouse.Reset();
 }
 
 static void DrawButtonSimple(int mouseX, int mouseY,
