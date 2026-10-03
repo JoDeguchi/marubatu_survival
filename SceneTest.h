@@ -59,6 +59,9 @@ class SceneTest : public SceneBase
 
 	float timer = 0.0f;
 
+	//	勝敗決まったら
+	bool decide = false;
+
 public:
 
 	/// <summary>
