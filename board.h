@@ -3,8 +3,8 @@
 #include "DxLib.h"		// DxLib
 #include "Background.h"
 
-#define BOARD_SIZE_W 3
-#define BOARD_SIZE_H 3
+#define BOARD_SIZE_W 5
+#define BOARD_SIZE_H 5
 
 
 /// <summary>
@@ -27,9 +27,9 @@ private:
 
 public:
 
-	//	盤の大きさ
+	//	盤の大きさ（5×5で統一）
 	int board_size[board_size_w][board_size_h] = {};
-	//	５マスに変える方法がなかったので新しい変数で変えるように
+	//	現在のマスサイズ（3か5か）
 	int current_w = 3;
 	int current_h = 3;
 
@@ -81,7 +81,7 @@ public:
 		else{
 			current_w = 3;
 			current_h = 3;
-			extend= 533;
+			extend = 400;
 		}
 	}
 
@@ -93,7 +93,7 @@ public:
 	{
 		// 盤面描画
 		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 150);
-		DrawFillBox(this->pos_x, this->pos_y,this->pos_x+extend, this->pos_y+extend, GetColor(0,200,0));	
+		DrawFillBox(this->pos_x, this->pos_y, this->pos_x + extend, this->pos_y + extend, GetColor(0, 200, 0));	
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
 };

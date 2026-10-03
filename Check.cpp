@@ -1,6 +1,6 @@
 ﻿#include "Check.h"
 
-//	勝ったかどうか
+//	勝ったかどうか（3×3用、3マスそろえたら勝ち）
 bool Check::CheckWin(int board[3][3],int player)
 {
 	//	横がそろったとき
@@ -44,59 +44,73 @@ bool Check::CheckWin(int board[3][3],int player)
 	return false;
 }
 
-
-// 勝ったかどうか 5マス用
+// 勝ったかどうか（5×5用、4マスそろえたら勝ち）
 bool Check::CheckWin2(int board[5][5], int player)
 {
-	// 横が5つそろったとき
+	// 横が4つそろったとき
 	for (int row = 0; row < 5; row++)
 	{
-		if (board[row][0] == player &&
-			board[row][1] == player &&
-			board[row][2] == player &&
-			board[row][3] == player &&
-			board[row][4] == player)
+		for (int col = 0; col < 2; col++)
 		{
-			return true;
+			if (board[row][col] == player &&
+				board[row][col + 1] == player &&
+				board[row][col + 2] == player &&
+				board[row][col + 3] == player)
+			{
+				return true;
+			}
 		}
 	}
 
-	// 縦が5つそろったとき
+	// 縦が4つそろったとき
 	for (int col = 0; col < 5; col++)
 	{
-		if (board[0][col] == player &&
-			board[1][col] == player &&
-			board[2][col] == player &&
-			board[3][col] == player &&
-			board[4][col] == player)
+		for (int row = 0; row < 2; row++)
 		{
-			return true;
+			if (board[row][col] == player &&
+				board[row + 1][col] == player &&
+				board[row + 2][col] == player &&
+				board[row + 3][col] == player)
+			{
+				return true;
+			}
 		}
 	}
 
-	// 左上 → 右下
-	if (board[0][0] == player &&
-		board[1][1] == player &&
-		board[2][2] == player &&
-		board[3][3] == player &&
-		board[4][4] == player)
+	// 左上 → 右下（4マス連続）
+	for (int row = 0; row < 2; row++)
 	{
-		return true;
+		for (int col = 0; col < 2; col++)
+		{
+			if (board[row][col] == player &&
+				board[row + 1][col + 1] == player &&
+				board[row + 2][col + 2] == player &&
+				board[row + 3][col + 3] == player)
+			{
+				return true;
+			}
+		}
 	}
 
-	// 右上 → 左下
-	if (board[0][4] == player &&
-		board[1][3] == player &&
-		board[2][2] == player &&
-		board[3][1] == player &&
-		board[4][0] == player)
+	// 右上 → 左下（4マス連続）
+	for (int row = 0; row < 2; row++)
 	{
-		return true;
+		for (int col = 3; col < 5; col++)
+		{
+			if (board[row][col] == player &&
+				board[row + 1][col - 1] == player &&
+				board[row + 2][col - 2] == player &&
+				board[row + 3][col - 3] == player)
+			{
+				return true;
+			}
+		}
 	}
 
 	return false;
 }
-//	文字で判定をたしかめる
+
+//	文字で判定を確認する
 void Check::Draw()
 {
 	SetFontSize(40);

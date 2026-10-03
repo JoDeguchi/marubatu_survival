@@ -37,9 +37,13 @@ class SceneTest : public SceneBase
 	Line line_w[4];
 	Line line_h[4];
 
-	//	丸とバツのインスタンス
+	//	丸とバツのインスタンス（3×3用）
 	Maru maru[3][3];
-	Batu batu[3][3];	
+	Batu batu[3][3];
+
+	//	丸とバツのインスタンス（5×5用）
+	Maru maru_5x5[5][5];
+	Batu batu_5x5[5][5];
 
 	//	マウス
 	Mouse mouse;
