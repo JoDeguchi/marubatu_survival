@@ -50,6 +50,17 @@ void SceneOp::Update()
 			this->game_ptr->ChageScene(1);
 			return;
 		}
+
+		//—V‚Ñ•û
+		if (x >= 1000 && x <= 1100 &&
+			y >= 600 && y <= 625)
+		{
+			this->game_ptr->ChageScene(3);
+			return;
+		}
+
+
+
 	}
 }
 

@@ -50,6 +50,9 @@ void SceneTest::Init()
 	//	UI
 	ui = UI("playerUI.png",30,-60);
 	ui2 = UI("NPCUI.png", 950, -70);
+
+	//背景画像
+	this->bg0 = Background("kokuban.png");
 	
 }
 

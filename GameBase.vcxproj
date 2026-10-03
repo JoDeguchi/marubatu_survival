@@ -139,6 +139,7 @@
     <ClCompile Include="Line.cpp" />
     <ClCompile Include="Marubatu.cpp" />
     <ClCompile Include="Mouse.cpp" />
+    <ClCompile Include="Rule.cpp" />
     <ClCompile Include="SceneEd.cpp" />
     <ClCompile Include="SceneOp.cpp" />
     <ClCompile Include="SceneTest.cpp" />
@@ -152,6 +153,7 @@
     <ClInclude Include="Line.h" />
     <ClInclude Include="Marubatu.h" />
     <ClInclude Include="Mouse.h" />
+    <ClInclude Include="Rule.h" />
     <ClInclude Include="SceneBase.h" />
     <ClInclude Include="SceneEd.h" />
     <ClInclude Include="SceneOp.h" />

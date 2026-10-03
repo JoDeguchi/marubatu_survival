@@ -15,7 +15,7 @@ class Game
 	/// <summary>
 	/// シーンインスタンスのポインタ配列
 	/// </summary>
-	SceneBase* scene_arr[3] = { nullptr, nullptr, nullptr };
+	SceneBase* scene_arr[4] = { nullptr, nullptr, nullptr, nullptr };
 
 	/// <summary>
 	/// 勝利判定（共通）

@@ -2,6 +2,7 @@
 #include "SceneOp.h"
 #include "SceneTest.h"
 #include "SceneEd.h"
+#include "Rule.h"
 
 /// <summary>
 /// ゲームループ
@@ -19,6 +20,11 @@ void Game::Game_loop()
 	// エンディングシーンをシーンリストに登録
 	SceneEd ed_scene(this);							// シーンをローカル変数として宣言
 	this->scene_arr[2] = &ed_scene;					// ローカル変数のポインタを取得して登録
+
+
+	// ルール説明シーンをシーンリストに登録
+	Rule rule_scene(this);							// シーンをローカル変数として宣言
+	this->scene_arr[3] = &rule_scene;				// ローカル変数のポインタを取得して登録
 
 
 	// オープニングシーンを選択
