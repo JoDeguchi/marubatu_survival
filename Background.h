@@ -19,6 +19,11 @@ protected:
 	/// </summary>
 	int image_hnd = -1;
 
+	/// <summary>
+	/// 描画座標
+	/// </summary>
+	int pos_x = 0; int pos_y = 0;
+
 public:
 
 	/// <summary>
@@ -30,9 +35,11 @@ public:
 	/// コンストラクター
 	/// </summary>
 	/// <param name="arg_file_path">初期画像ファイルパス</param>
-	Background(std::string arg_file_path){
+	Background(std::string arg_file_path,int x,int y)
+	{
 		// 画像ファイルを読み込む
-		this->Load_image(arg_file_path);
+		Load_image(arg_file_path);
+		SetPos(x, y);
 	}
 
 	/// <summary>
@@ -42,11 +49,23 @@ public:
 	void Load_image(std::string arg_file_path)
 	{
 		// 画像ファイルパスを保持
-		this->file_path = arg_file_path;
+		file_path = arg_file_path;
 
 		// 指定されたファイルを読み込む
-		this->image_hnd = LoadGraph(this->file_path.c_str());
+		image_hnd = LoadGraph(file_path.c_str());
 	}
+
+	/// <summary>
+	/// 描画位置
+	/// </summary>
+	/// <param name="x"></param>
+	/// <param name="y"></param>
+	void SetPos(int x, int y)
+	{
+		pos_x = x;
+		pos_y = y;
+	}
+
 
 	/// <summary>
 	/// 背景を描画
@@ -55,15 +74,7 @@ public:
 	void Draw()
 	{
 		// 背景を描画
-		DrawGraph(0, 0, this->image_hnd, true);	
-	}
-
-	/// <summary>
-	/// 画像ハンドルを取得
-	/// </summary>
-	int GetImageHandle()
-	{
-		return this->image_hnd;
+		DrawGraph(pos_x, pos_y,image_hnd, true);	
 	}
 };
 

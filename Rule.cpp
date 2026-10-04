@@ -1,35 +1,35 @@
-#include "Rule.h"
+ï»¿#include "Rule.h"
 #include "DxLib.h"
 
 void Rule::Init()
 {
-	// ”wŒi‰æ‘œ
+	// èƒŒæ™¯ç”»åƒ
 	this->bg0.Load_image("background.png");
 
-	// ƒ}ƒXƒRƒbƒgƒLƒƒƒ‰‚ð“Ç‚Ýž‚Þ
+	// ãƒžã‚¹ã‚³ãƒƒãƒˆã‚­ãƒ£ãƒ©ã‚’èª­ã¿è¾¼ã‚€
 	this->mascot.Load_image("aikon.png");
 	this->mascot2.Load_image("aikon2.png");
 
-	// ƒ}ƒEƒXó‘Ô‚ðƒŠƒZƒbƒg
+	// ãƒžã‚¦ã‚¹çŠ¶æ…‹ã‚’ãƒªã‚»ãƒƒãƒˆ
 	this->mouse.Reset();
 }
 
 void Rule::Input()
 {
-	this->key_state.Read();	// ƒL[ƒ{[ƒh
-	this->mouse.Read();		// ƒ}ƒEƒX
+	this->key_state.Read();	// ã‚­ãƒ¼ãƒœãƒ¼ãƒ‰
+	this->mouse.Read();		// ãƒžã‚¦ã‚¹
 }
 
 void Rule::Update()
 {
-	// ƒ}ƒEƒX‚ª—£‚³‚ê‚½Žž‚¾‚¯
+	// ãƒžã‚¦ã‚¹ãŒé›¢ã•ã‚ŒãŸæ™‚ã ã‘
 	if (this->mouse.ClicRelease())
 	{
-		// ƒ}ƒEƒXÀ•WŽæ“¾
+		// ãƒžã‚¦ã‚¹åº§æ¨™å–å¾—
 		int x = this->mouse.GetX();
 		int y = this->mouse.GetY();
 
-		// –ß‚éƒ{ƒ^ƒ“
+		// æˆ»ã‚‹ãƒœã‚¿ãƒ³
 		if (x >= 1000 && x <= 1100 &&
 			y >= 600 && y <= 625)
 		{
@@ -41,31 +41,31 @@ void Rule::Update()
 
 void Rule::Draw()
 {
-	// ”wŒi
+	// èƒŒæ™¯
 	this->bg0.Draw();
 
-	// ƒ}ƒEƒXÀ•W
+	// ãƒžã‚¦ã‚¹åº§æ¨™
 	int mouseX = this->mouse.GetX();
 	int mouseY = this->mouse.GetY();
 
-	// ƒ^ƒCƒgƒ‹
+	// ã‚¿ã‚¤ãƒˆãƒ«
 	SetFontSize(64);
-	DrawString(400, 50, "‚ ‚»‚Ñ‚©‚½", GetColor(255, 255, 255));
+	DrawString(400, 50, "ã‚ãã³ã‹ãŸ", GetColor(255, 255, 255));
 
-	// ƒ}ƒXƒRƒbƒgƒLƒƒƒ‰‚ð•`‰æ
-	DrawGraph(0, 500, this->mascot.GetImageHandle(), TRUE);
-	DrawGraph(1000, 500, this->mascot2.GetImageHandle(), TRUE);
+	//// ãƒžã‚¹ã‚³ãƒƒãƒˆã‚­ãƒ£ãƒ©ã‚’æç”»
+	//DrawGraph(0, 500, this->mascot.GetImageHandle(), TRUE);
+	//DrawGraph(1000, 500, this->mascot2.GetImageHandle(), TRUE);
 
-	// ƒ‹[ƒ‹à–¾ƒeƒLƒXƒg
+	// ãƒ«ãƒ¼ãƒ«èª¬æ˜Žãƒ†ã‚­ã‚¹ãƒˆ
 	SetFontSize(32);
-	DrawString(100, 150, "ƒQ[ƒ€‚Ìƒ‹[ƒ‹", GetColor(255, 255, 255));
-	DrawString(100, 200, "E3~3‚Ìƒ}ƒX‚É‚ÄZ‚Æ~‚ðŒðŒÝ‚É’u‚«‚Ü‚·", GetColor(255, 255, 255));
-	DrawString(100, 240, "Eæ‚ÉŽ©•ª‚Ì‹L†‚ð3‚Â‚»‚ë‚¦‚½‚çŸ‚¿‚Å‚·", GetColor(255, 255, 255));
-	DrawString(100, 280, "E‘S‚Ä‚Ìƒ}ƒX‚ª–„‚Ü‚Á‚½‚çˆø‚«•ª‚¯‚Å‚·", GetColor(255, 255, 255));
-	DrawString(100, 320, "Eˆø‚«•ª‚¯‚Ìê‡5‚w5‚ÉØ‚è‘Ö‚í‚è‚Ü‚·", GetColor(255, 255, 255));
-	DrawString(100, 360, "EØ‚è‘Ö‚í‚èŒã4ƒ}ƒX‚»‚ë‚¦‚½‚Ù‚¤‚ªŸ‚¿‚Å‚·", GetColor(255, 255, 255));
+	DrawString(100, 150, "ã‚²ãƒ¼ãƒ ã®ãƒ«ãƒ¼ãƒ«", GetColor(255, 255, 255));
+	DrawString(100, 200, "ãƒ»3Ã—3ã®ãƒžã‚¹ã«ã¦ã€‡ã¨Ã—ã‚’äº¤äº’ã«ç½®ãã¾ã™", GetColor(255, 255, 255));
+	DrawString(100, 240, "ãƒ»å…ˆã«è‡ªåˆ†ã®è¨˜å·ã‚’3ã¤ãã‚ãˆãŸã‚‰å‹ã¡ã§ã™", GetColor(255, 255, 255));
+	DrawString(100, 280, "ãƒ»å…¨ã¦ã®ãƒžã‚¹ãŒåŸ‹ã¾ã£ãŸã‚‰å¼•ãåˆ†ã‘ã§ã™", GetColor(255, 255, 255));
+	DrawString(100, 320, "ãƒ»å¼•ãåˆ†ã‘ã®å ´åˆ5ï¼¸5ã«åˆ‡ã‚Šæ›¿ã‚ã‚Šã¾ã™", GetColor(255, 255, 255));
+	DrawString(100, 360, "ãƒ»åˆ‡ã‚Šæ›¿ã‚ã‚Šå¾Œ4ãƒžã‚¹ãã‚ãˆãŸã»ã†ãŒå‹ã¡ã§ã™", GetColor(255, 255, 255));
 
-	// –ß‚éƒ{ƒ^ƒ“
+	// æˆ»ã‚‹ãƒœã‚¿ãƒ³
 	SetFontSize(25);
 	int button_color = GetColor(255, 255, 255);
 	if (mouseX >= 1000 && mouseX <= 1100 &&
@@ -73,5 +73,5 @@ void Rule::Draw()
 	{
 		button_color = GetColor(255, 255, 0);
 	}
-	DrawString(1000, 600, "–ß‚é", button_color);
+	DrawString(1000, 600, "æˆ»ã‚‹", button_color);
 }

@@ -1,57 +1,47 @@
-#pragma once
-#include "board.h"
-#include "Mouse.h"
+﻿#pragma once
+#include "Background.h"
+#include "Hit.h"
 
-class UI: public Board
+/// <summary>
+/// 画像クラス
+/// </summary>
+class UI: public Background
 {
-	//Mouse mouse;
-
-	int pos_x=0;
-	int pos_y=0;
-
+private:
+	bool HitIn = false;	//	マウスが画像の中にあるかどうか
 public:
 
-	//	�f�t�H���g
+	//	デフォルト
 	UI(){}
-	//	�R���X�g���N�^
+	//	コンストラクタ
 	UI(std::string arg_file_path, int arg_x, int arg_y)
 	{
-		this->Load_image(arg_file_path);
-
-		this->pos_x = arg_x;
-		this->pos_y = arg_y;
+		Load_image(arg_file_path);
+		SetPos(arg_x, arg_y);
 	}
 
-	//	�`��
+	//	マウス(引数)と画像のあたり判定
+	bool Hit(int mx, int my)
+	{
+		HitIn= Hit::Check(mx, my, pos_x, pos_y, image_hnd);
+		return HitIn;
+	}
+
+	//	描画
 	void Draw()
 	{
-		DrawGraph(pos_x, pos_y, this->image_hnd, true);
+		int w, h;							//	画像の幅と高さ
+		GetGraphSize(image_hnd, &w, &h);	//	画像サイズを取得
+
+		//	マウスが画像の中にある場合は、画像を縮小して描画
+		if (HitIn) {
+			//	ちょっと補正
+			DrawExtendGraph(pos_x+50, pos_y, pos_x+w*0.92, pos_y + h*0.9, image_hnd, true);
+		}
+		else {
+			//	普通に描画
+			DrawGraph(pos_x, pos_y, image_hnd, true);
+		}
+		
 	}
-
 };
-
-//void Update(int arg_board_size[][])
-//{
-//	int x = mouse.GetX() - 430;
-//	int y = mouse.GetY() - 200;
-
-//	if (x >= 0 && x < 400 && y >= 0 && y < 400)
-//	{
-//		int col = x / (400 / 3);
-//		int row = y / (400 / 3);
-
-//		if (arg_board_size[row][col] == 0)
-//		{
-//			if (turn == 0)
-//			{
-//				board_size[row][col] = 1;	// �Z
-//				turn = 1;
-//			}
-//			else
-//			{
-//				board_size[row][col] = 2;	// �~
-//				turn = 0;
-//			}
-//		}
-//	}
-//}

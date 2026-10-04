@@ -1,69 +1,55 @@
-#include "SceneOp.h"
+ï»¿#include "SceneOp.h"
 #include "DxLib.h"
-
-// ƒ{ƒ^ƒ“•`‰æ
-// ƒ}ƒEƒXÀ•WAƒ{ƒ^ƒ“À•WAƒ{ƒ^ƒ“‰¡•
-void DrawButton(int mouseX, int mouseY,
-	int x, int y, int w, int h,
-	const char* text, int fontSize)
-{
-	SetFontSize(fontSize);
-
-	int color = GetColor(255, 255, 255);
-
-	// ƒ}ƒEƒX‚ªã‚É‚ ‚é‚©”»’è
-	if (mouseX >= x && mouseX <= x + w &&
-		mouseY >= y && mouseY <= y + h)
-	{
-		color = GetColor(255, 255, 0);
-	}
-
-	DrawString(x, y, text, color);
-}
 
 void SceneOp::Init()
 {   
-	// ”wŒi‰æ‘œ
-	this->bg0.Load_image("background.png");
-	// ƒ}ƒXƒRƒbƒgƒLƒƒƒ‰‚ğ“Ç‚İ‚Ş
-	this->mascot.Load_image("aikon.png");
-	this->mascot2.Load_image("aikon2.png");
+	// èƒŒæ™¯ç”»åƒ
+	bg = Background("background.png", 0, 0);
+	//	UIç”»åƒ (ç”»åƒã¨åº§æ¨™)ã®åˆæœŸå€¤
+	mascot		= UI("aikon.png", 0, 500);					//  ãƒã‚¹ã‚³ãƒƒãƒˆã‚­ãƒ£ãƒ©
+	mascot2		= UI("aikon2.png", 1000, 500);				//  ãƒã‚¹ã‚³ãƒƒãƒˆã‚­ãƒ£ãƒ©ï¼’
+	title		= UI("tytle.png", 150, -20);				//	ã‚¿ã‚¤ãƒˆãƒ«å
+	StartBotan  = UI("StartBotan.png", 450, 400);			//	ã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³
+	RuleBotan	= UI("RuleBotan.png", 550, 600);			//	ãƒ«ãƒ¼ãƒ«ãƒœã‚¿ãƒ³
 
-	// ƒ}ƒEƒXó‘Ô‚ğƒŠƒZƒbƒg
-	this->mouse.Reset();
+	// ãƒã‚¦ã‚¹çŠ¶æ…‹ã‚’ãƒªã‚»ãƒƒãƒˆ
+	mouse.Reset();
 }
 
 void SceneOp::Input()
 {
-	this->key_state.Read(); // ƒL[ƒ{[ƒh
-	this->mouse.Read();     // ƒ}ƒEƒX
+	mouse.Read();     // ãƒã‚¦ã‚¹èª­ã¿è¾¼ã¿
 }
 
 void SceneOp::Update()
 {
-	// ƒ}ƒEƒXÀ•Wæ“¾
-	int x = this->mouse.GetX();
-	int y = this->mouse.GetY();
+	// ãƒã‚¦ã‚¹åº§æ¨™å–å¾—
+	int mx = mouse.GetX();
+	int my = mouse.GetY();
 
-	// ƒNƒŠƒbƒN‚Ì”»’èi‰Ÿ‚³‚ê‚½uŠÔj
-	if (this->mouse.ClicPress())
+	//	ãƒã‚¦ã‚¹ã¨ç”»åƒï¼ˆã‚¹ã‚¿ãƒ¼ãƒˆã€ãƒ«ãƒ¼ãƒ«ãƒœã‚¿ãƒ³ï¼‰ã®ã‚ãŸã‚Šåˆ¤å®šã‚’æ¯ãƒ•ãƒ¬ãƒ¼ãƒ èª­ã‚€
+	//	ç”»åƒç¸®å°ã«å¿…è¦
+	StartBotan.Hit(mx, my);
+	RuleBotan.Hit(mx, my);
+
+	// ã‚¯ãƒªãƒƒã‚¯æ™‚ã®åˆ¤å®šï¼ˆæŠ¼ã•ã‚ŒãŸç¬é–“ï¼‰
+	//	ã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³
+	if (mouse.ClicPress())
 	{
-		// ƒIƒtƒ‰ƒCƒ“‘Îí
-		if (x >= 400 && x <= 650 &&
-			y >= 300 && y <= 335)
+		if (StartBotan.Hit(mx, my))
 		{
-			this->game_ptr->ChageScene(1);
+			game_ptr->ChageScene(1);	//	ã‚²ãƒ¼ãƒ ã‚·ãƒ¼ãƒ³ã¸
 			return;
 		}
 	}
 
-	// ‚ ‚»‚Ñ‚©‚½i—£‚³‚ê‚½uŠÔ‚Ì‚İj
-	if (this->mouse.ClicRelease())
+	// ã‚¯ãƒªãƒƒã‚¯é›¢ã•ã‚ŒãŸç¬é–“ã®ã¿ã®åˆ¤å®š
+	//	ãƒ«ãƒ¼ãƒ«ãƒœã‚¿ãƒ³
+	if (mouse.ClicRelease())
 	{
-		if (x >= 1000 && x <= 1100 &&
-			y >= 600 && y <= 625)
+		if (RuleBotan.Hit(mx, my))
 		{
-			this->game_ptr->ChageScene(3);
+			game_ptr->ChageScene(3);	//	ãƒ«ãƒ¼ãƒ«èª¬æ˜ã‚·ãƒ¼ãƒ³ã¸
 			return;
 		}
 	}
@@ -71,24 +57,13 @@ void SceneOp::Update()
 
 void SceneOp::Draw()
 {
-	// ”wŒi
-	this->bg0.Draw();
+	// èƒŒæ™¯
+	bg.Draw();
 
-	// ƒ}ƒXƒRƒbƒgƒLƒƒƒ‰‚ğ•`‰æ
-	DrawGraph(0, 500, this->mascot.GetImageHandle(), TRUE);
-	DrawGraph(1000, 500, this->mascot2.GetImageHandle(), TRUE);
-
-	// ƒ}ƒEƒXÀ•W
-	int mouseX = this->mouse.GetX();
-	int mouseY = this->mouse.GetY();
-
-	// ƒ^ƒCƒgƒ‹
-	SetFontSize(64);
-	DrawString(400, 100, "Z~ƒTƒoƒCƒoƒ‹",GetColor(255, 255, 255));
-
-	// ƒ{ƒ^ƒ“
-	// •¶š—ñ•`‰æ
-	DrawButton(mouseX, mouseY,400, 300, 250, 35, "ƒIƒtƒ‰ƒCƒ“‘Îí", 32);
-	
-	DrawButton(mouseX, mouseY,1000, 600, 100, 25, "‚ ‚»‚Ñ‚©‚½", 22);
+	mascot.Draw();		//  ãƒã‚¹ã‚³ãƒƒãƒˆã‚­ãƒ£ãƒ©
+	mascot2.Draw();		//  ãƒã‚¹ã‚³ãƒƒãƒˆã‚­ãƒ£ãƒ©2
+	title.Draw();		//	ã‚¿ã‚¤ãƒˆãƒ«å	
+	StartBotan.Draw();	//	ã‚¹ã‚¿ãƒ¼ãƒˆãƒœã‚¿ãƒ³
+	RuleBotan.Draw();	//	ãƒ«ãƒ¼ãƒ«ãƒœã‚¿ãƒ³
+		
 }

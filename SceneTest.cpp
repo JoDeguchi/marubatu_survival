@@ -52,7 +52,7 @@ void SceneTest::Init()
 	ui2 = UI("NPCUI.png", 950, -70);
 
 	//背景画像
-	this->bg0 = Background("kokuban.png");
+	this->bg0 = Background("kokuban.png",0,0);
 
 	// マウス状態をリセット
 	this->mouse.Reset();

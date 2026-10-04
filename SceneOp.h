@@ -1,70 +1,67 @@
-#pragma once
+ï»¿#pragma once
 #include "SceneBase.h"
 
-#include "Game.h"			// ƒQ[ƒ€ƒNƒ‰ƒX
-#include "Background.h"		// ”wŒiƒNƒ‰ƒX
-#include "KeyReader.h"		// ƒL[ƒŠ[ƒ_[
-#include "Mouse.h"          // ƒ}ƒEƒX @@
+#include "Game.h"			// ã‚²ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹
+#include "Background.h"		// èƒŒæ™¯ã‚¯ãƒ©ã‚¹
+#include "KeyReader.h"		// ã‚­ãƒ¼ãƒªãƒ¼ãƒ€ãƒ¼
+#include "Mouse.h"          // ãƒã‚¦ã‚¹ ã€€ã€€
+#include "UI.h"            // UIã‚¯ãƒ©ã‚¹
 
 /// <summary>
-/// ƒI[ƒvƒjƒ“ƒOiƒV[ƒ“j
+/// ã‚ªãƒ¼ãƒ—ãƒ‹ãƒ³ã‚°ï¼ˆã‚·ãƒ¼ãƒ³ï¼‰
 /// </summary>
 class SceneOp : public SceneBase
 {
-	/// <summary>
-	/// GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[
-	/// </summary>
+
+	/// Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼
 	Game* game_ptr;
 
-	/// <summary>
-	/// ƒL[ƒŠ[ƒ_[ƒCƒ“ƒXƒ^ƒ“ƒX
-	/// </summary>
-	KeyReader key_state;
-
-	// ”wŒiƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-	Background bg0;
-
-	Background mascot;
-	Background mascot2;
-
-	//	ƒ}ƒEƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-	Mouse mouse;
-
+	// èƒŒæ™¯
+	Background bg;
 	
+	//	UIç”»åƒ
+	UI mascot;
+	UI mascot2;
+	UI title;
+	UI StartBotan;
+	UI RuleBotan;
+
+	//	ãƒã‚¦ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	Mouse mouse;
 
 public:
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	/// </summary>
-	/// <param name="arg_game_ptr">GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[</param>
+	/// <param name="arg_game_ptr">Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼</param>
 	SceneOp(Game* arg_game_ptr)
 	{
-		// GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[‚ğ•Û
+		// Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼ã‚’ä¿æŒ
 		this->game_ptr = arg_game_ptr;
 	}
 
 	/// <summary>
-	/// ‰Šú‰»ˆ—
+	/// åˆæœŸåŒ–å‡¦ç†
 	/// </summary>
 	void Init() override;
 
 	/// <summary>
-	/// “ü—Íˆ—
+	/// å…¥åŠ›å‡¦ç†
 	/// </summary>
 	void Input() override;
 
 	/// <summary>
-	/// XVˆ—
+	/// æ›´æ–°å‡¦ç†
 	/// </summary>
 	void Update() override;
 
 	/// <summary>
-	/// •`‰æˆ—
+	/// æç”»å‡¦ç†
 	/// </summary>
 	void Draw() override;
 
 	/// <summary>
-	/// ‰¹ºÄ¶ˆ—
+	/// éŸ³å£°å†ç”Ÿå‡¦ç†
 	/// </summary>
 	void Sound_play() override {};
 
