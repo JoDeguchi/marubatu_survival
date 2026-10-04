@@ -106,6 +106,9 @@
     <ClInclude Include="Hit.h">
       <Filter>ソース ファイル\System</Filter>
     </ClInclude>
+    <ClInclude Include="String.h">
+      <Filter>ソース ファイル\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />

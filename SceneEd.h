@@ -1,66 +1,72 @@
-#pragma once
+ï»¿#pragma once
 #include "SceneBase.h"
 
-#include "Game.h"			// ƒQ[ƒ€ƒNƒ‰ƒX
-#include "Background.h"		// ”wŒiƒNƒ‰ƒX
+#include "Game.h"			// ã‚²ãƒ¼ãƒ ã‚¯ãƒ©ã‚¹
+#include "Background.h"		// èƒŒæ™¯ã‚¯ãƒ©ã‚¹
 #include "Mouse.h"
+#include "UI.h"
+#include "String.h"
+
+class Check;
 
 /// <summary>
-/// ƒGƒ“ƒfƒBƒ“ƒOiƒV[ƒ“j
+/// ã‚¨ãƒ³ãƒ‡ã‚£ãƒ³ã‚°ï¼ˆã‚·ãƒ¼ãƒ³ï¼‰
 /// </summary>
 class SceneEd : public SceneBase
 {
-
 	/// <summary>
-	/// GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[
+	/// Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼
 	/// </summary>
 	Game* game_ptr;
 
-	// ”wŒiƒNƒ‰ƒX‚ÌƒCƒ“ƒXƒ^ƒ“ƒX
-	Background bg0;
+	//	å‹åˆ©åˆ¤å®šï¼ˆå…±é€šï¼‰
+	Check check_data;
 
-	Background title_return;// ƒ^ƒCƒgƒ‹‚É–ß‚éUI‚Ì”wŒi
-	Background once_again;// ‚à‚¤ˆê“xƒvƒŒƒC‚·‚éUI‚Ì”wŒi
-	Background total_victory;// ZŸ‚¿UI‚Ì”wŒi
-	Background decisive_victory;// ~Ÿ‚¿UI‚Ì”wŒi
-
-
-	// ƒ}ƒEƒX
+	// èƒŒæ™¯ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	Background bg;
+	//	UIç”»åƒ
+	UI CircleVictory;	// ã€‡å‹ã¡
+	UI CrossVictory;	// Ã—å‹ã¡
+	// ãƒã‚¦ã‚¹
 	Mouse mouse;
+
+	// æ–‡å­—ã‚¯ãƒ©ã‚¹ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹
+	String string0;	// ã‚¿ã‚¤ãƒˆãƒ«ã«æˆ»ã‚‹æ–‡å­—
+	String string1;	// ã‚²ãƒ¼ãƒ çµ‚äº†æ–‡å­—
 
 public:
 	/// <summary>
-	/// ƒRƒ“ƒXƒgƒ‰ƒNƒ^[
+	/// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿ãƒ¼
 	/// </summary>
-	/// <param name="arg_game_ptr">GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[</param>
+	/// <param name="arg_game_ptr">Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼</param>
 	SceneEd(Game* arg_game_ptr)
 	{
-		// GameƒCƒ“ƒXƒ^ƒ“ƒX‚Ìƒ|ƒCƒ“ƒ^[‚ğ•Û
+		// Gameã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®ãƒã‚¤ãƒ³ã‚¿ãƒ¼ã‚’ä¿æŒ
 		this->game_ptr = arg_game_ptr;
 	}
 
 	/// <summary>
-	/// ‰Šú‰»ˆ—
+	/// åˆæœŸåŒ–å‡¦ç†
 	/// </summary>
 	void Init() override;
 
 	/// <summary>
-	/// “ü—Íˆ—
+	/// å…¥åŠ›å‡¦ç†
 	/// </summary>
 	void Input() override;
 
 	/// <summary>
-	/// XVˆ—
+	/// æ›´æ–°å‡¦ç†
 	/// </summary>
 	void Update() override;
 
 	/// <summary>
-	/// •`‰æˆ—
+	/// æç”»å‡¦ç†
 	/// </summary>
 	void Draw() override;
 
 	/// <summary>
-	/// ‰¹ºÄ¶ˆ—
+	/// éŸ³å£°å†ç”Ÿå‡¦ç†
 	/// </summary>
 	void Sound_play() override {};
 };

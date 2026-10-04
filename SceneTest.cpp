@@ -358,9 +358,9 @@ void SceneTest::Draw()
 		}
 	}
 
-	//	UIの描画
-	ui.Draw();
-	ui2.Draw();
+	////	UIの描画
+	//ui.Draw();
+	//ui2.Draw();
 
 	//	そろったと文字列でそれぞれ描画
 	if (!check.draw) {

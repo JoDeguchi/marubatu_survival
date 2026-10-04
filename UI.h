@@ -21,9 +21,9 @@ public:
 	}
 
 	//	マウス(引数)と画像のあたり判定
-	bool Hit(int mx, int my)
+	bool HitImg(int mx, int my)
 	{
-		HitIn= Hit::Check(mx, my, pos_x, pos_y, image_hnd);
+		HitIn= Hit::CheckImage(mx, my, pos_x, pos_y, image_hnd);
 		return HitIn;
 	}
 

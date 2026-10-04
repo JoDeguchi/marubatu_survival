@@ -29,14 +29,14 @@ void SceneOp::Update()
 
 	//	マウスと画像（スタート、ルールボタン）のあたり判定を毎フレーム読む
 	//	画像縮小に必要
-	StartBotan.Hit(mx, my);
-	RuleBotan.Hit(mx, my);
+	StartBotan.HitImg(mx, my);
+	RuleBotan.HitImg(mx, my);
 
 	// クリック時の判定（押された瞬間）
 	//	スタートボタン
 	if (mouse.ClicPress())
 	{
-		if (StartBotan.Hit(mx, my))
+		if (StartBotan.HitImg(mx, my))
 		{
 			game_ptr->ChageScene(1);	//	ゲームシーンへ
 			return;
@@ -47,7 +47,7 @@ void SceneOp::Update()
 	//	ルールボタン
 	if (mouse.ClicRelease())
 	{
-		if (RuleBotan.Hit(mx, my))
+		if (RuleBotan.HitImg(mx, my))
 		{
 			game_ptr->ChageScene(3);	//	ルール説明シーンへ
 			return;
