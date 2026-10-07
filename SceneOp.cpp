@@ -34,7 +34,7 @@ void SceneOp::Update()
 
 	// クリック時の判定（押された瞬間）
 	//	スタートボタン
-	if (mouse.ClicPress())
+	if (mouse.ClicRelease())
 	{
 		if (StartBotan.HitImg(mx, my))
 		{

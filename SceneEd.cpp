@@ -12,11 +12,11 @@ void SceneEd::Init()
 	// マウス状態をリセット
 	mouse.Reset();
 	// UI画像の読込
-	CircleVictory = UI("total_victory.png", 300, 200);		// 〇勝ち画像
-	CrossVictory  = UI("decisive_victory.png", 300, 200);	// ×勝ち画像
+	CircleVictory = UI("total_victory.png", 450, 160);		// 〇勝ち画像
+	CrossVictory  = UI("decisive_victory.png", 450, 160);	// ×勝ち画像
 
-	string0 = String(300, 200, "タイトルに戻る", 64);	
-	string1 = String(300, 400, "ゲーム終了", 64);
+	string0 = String(500, 400, "タイトルに戻る", 70);	
+	string1 = String(550, 550, "ゲーム終了", 70);
 }
 
 /// <summary>
@@ -43,7 +43,7 @@ void SceneEd::Update()
 	string0.HitText(x, y); // 「タイトルに戻る」文字のあたり判定
 	string1.HitText(x, y); // 「ゲーム終了」文字のあたり判定
 	// マウスクリック時の処理
-	if (this->mouse.ClicPress())
+	if (this->mouse.ClicRelease())
 	{
 		// タイトルへ戻る
 		if (string0.HitText(x, y))
@@ -69,6 +69,9 @@ void SceneEd::Draw()
 	// 背景0を描画
 	this->bg.Draw();
 
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 120);
+	DrawFillBox(450, 380, 1050, 680, GetColor(0, 0, 0));
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	// 勝者に応じて該当の画像のみを表示する
 	if (check_data.playerwinner)
