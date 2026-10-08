@@ -34,6 +34,9 @@ class SceneEd : public SceneBase
 	String string0;	// タイトルに戻る文字
 	String string1;	// ゲーム終了文字
 
+	UI confetti;
+	UI confetti2;
+
 public:
 	/// <summary>
 	/// コンストラクター

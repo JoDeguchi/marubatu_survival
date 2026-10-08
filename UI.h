@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Background.h"
 #include "Hit.h"
+#include "Main.h"
 
 /// <summary>
 /// 画像クラス
@@ -18,6 +19,24 @@ public:
 	{
 		Load_image(arg_file_path);
 		SetPos(arg_x, arg_y);
+	}
+
+	//	ゲッター関数Y
+	//	紙吹雪用
+	int GetY()const
+	{
+		return pos_y;
+	}
+
+	/// <summary>
+	/// 移動
+	/// </summary>
+	/// <param name="arg_x"></param>
+	/// <param name="arg_y"></param>
+	void Move(int arg_x, int arg_y)
+	{
+		pos_x += arg_x;
+		pos_y += arg_y;
 	}
 
 	//	マウス(引数)と画像のあたり判定

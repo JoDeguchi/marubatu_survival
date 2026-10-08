@@ -134,6 +134,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Check.cpp" />
+    <ClCompile Include="Confetti.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="KeyRead.cpp" />
     <ClCompile Include="Line.cpp" />
@@ -143,15 +144,17 @@
     <ClCompile Include="SceneEd.cpp" />
     <ClCompile Include="SceneOp.cpp" />
     <ClCompile Include="SceneTest.cpp" />
-    <ClCompile Include="WinMain.cpp" />
+    <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Background.h" />
     <ClInclude Include="Check.h" />
+    <ClInclude Include="Confetti.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Hit.h" />
     <ClInclude Include="KeyReader.h" />
     <ClInclude Include="Line.h" />
+    <ClInclude Include="Main.h" />
     <ClInclude Include="Marubatu.h" />
     <ClInclude Include="Mouse.h" />
     <ClInclude Include="Rule.h" />

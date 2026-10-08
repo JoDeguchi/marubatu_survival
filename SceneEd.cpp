@@ -17,6 +17,9 @@ void SceneEd::Init()
 
 	string0 = String(500, 400, "タイトルに戻る", 70);	
 	string1 = String(550, 550, "ゲーム終了", 70);
+
+	confetti = UI("02.png", 0, 0);
+	confetti2 = UI("02.png", 0, -1500);
 }
 
 /// <summary>
@@ -59,6 +62,23 @@ void SceneEd::Update()
 			exit(0);
 		}
 	}
+
+	// 紙吹雪の高さ
+	const int IMG_H = 1500;
+
+	// 紙吹雪を下へ移動
+	confetti.Move(0, 4);
+	confetti2.Move(0, 4);
+
+	// 1枚目が画面下に消えたら上に戻す
+	if (confetti.GetY() >= WINDOW_H) {
+		confetti.SetPos(0, confetti2.GetY() - IMG_H);
+	}
+
+	// 2枚目が画面下に消えたら上に戻す
+	if (confetti2.GetY() >= WINDOW_H) {
+		confetti2.SetPos(0, confetti.GetY() - IMG_H);
+	}
 }
 
 /// <summary>
@@ -72,6 +92,10 @@ void SceneEd::Draw()
 	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 120);
 	DrawFillBox(450, 380, 1050, 680, GetColor(0, 0, 0));
 	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+	//	紙吹雪描画
+	confetti.Draw();
+	confetti2.Draw();
 
 	// 勝者に応じて該当の画像のみを表示する
 	if (check_data.playerwinner)
