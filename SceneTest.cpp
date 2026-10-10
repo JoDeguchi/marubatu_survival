@@ -4,6 +4,8 @@
 #define LINE_BASE_X 550
 #define LINE_BASE_Y 330
 
+int SceneTest::se_put = -1;   // -1 = 未読み込み
+
 /// <summary>
 /// 初期化
 /// </summary>
@@ -62,6 +64,12 @@ void SceneTest::Init()
 	//	プレイヤー判別ボタン
 	playerBottan = UI("player_botan.png", -50, 0);
 	playerBottan2 = UI("player2_botan.png",1050, 0);
+
+	//SE読み込み
+	if (se_put == -1) {
+		se_put = LoadSoundMem("decision_2.mp3");
+	}
+
 }
 
 /// <summary>
@@ -72,6 +80,24 @@ void SceneTest::Input()
 	//	マウス読み込み
 	mouse.Read();
 }
+
+
+//駒を数える関数
+int SceneTest::CountPieces()
+{
+	int size = check.draw ? 5 : 3;   // 5×5モードか3×3モードか
+	int count = 0;
+	for (int row = 0; row < size; row++) {
+		for (int col = 0; col < size; col++) {
+			if (board.board_size[row][col] != 0) {
+				count++;
+			}
+		}
+	}
+	return count;
+}
+
+
 
 /// <summary>
 /// 丸と×をリセット（5×5用）
@@ -99,6 +125,8 @@ void SceneTest::ResetMaruBatu()
 			batu_5x5[row][col] = Batu("batu.png", x-15, y-15);
 		}
 	}
+
+	turn.Reset();
 }
 
 /// <summary>
@@ -134,6 +162,7 @@ void SceneTest::Reset5x5()
 	check.full = false;
 	decide = false;
 	timer = 0;
+	turn.Reset();
 }
 
 /// <summary>
@@ -144,6 +173,9 @@ void SceneTest::Update()
 	//	勝敗が決まっていない場合のみマウスクリック処理
 	if (!decide && mouse.ClicPress())
 	{
+
+		int before = CountPieces();   // 置く前の駒の数
+
 		//	マウス座標
 		int mx = mouse.GetX() - LINE_BASE_X;
 		int my = mouse.GetY() - LINE_BASE_Y;
@@ -159,6 +191,13 @@ void SceneTest::Update()
 			int my_5x5 = mouse.GetY() - (LINE_BASE_Y - 133);
 			turn.TurnChange5x5(board, mx_5x5, my_5x5);
 		}
+
+		// 駒が増えていたらSE再生
+		if (CountPieces() > before)
+		{
+			PlaySoundMem(se_put, DX_PLAYTYPE_BACK);
+		}
+
 	}
 
 	//	そろったら勝ったと判定　それぞれ
@@ -335,6 +374,19 @@ void SceneTest::Draw()
 
 	playerBottan.Draw();
 	playerBottan2.Draw();
+
+
+	// マウスが乗っているマスの枠(勝敗が決まるまで)
+	if (!decide)
+	{
+		// 駒の数が偶数なら〇の番、奇数なら×の番(ターン表示と同じ判定)
+		unsigned int color = (CountPieces() % 2 == 0)
+			? GetColor(255, 20, 100)     // 〇:赤系
+			: GetColor(0, 255, 255);     // ×:水色
+		board.DrawCursor(mouse.GetX(), mouse.GetY(), color);
+	}
+
+
 
 	if (!check.draw) {
 		//	丸と×の描画（3×3）

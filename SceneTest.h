@@ -66,6 +66,13 @@ class SceneTest : public SceneBase
 	//	勝敗決まったら
 	bool decide = false;
 
+
+	//	駒を置いた時のSEのハンドル
+	static int se_put;
+
+	//	盤面に置かれている駒の数を数える
+	int CountPieces();
+
 public:
 
 	/// <summary>

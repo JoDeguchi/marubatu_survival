@@ -96,4 +96,43 @@ public:
 		DrawFillBox(this->pos_x, this->pos_y, this->pos_x + extend, this->pos_y + extend, GetColor(0, 200, 0));	
 		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 	}
+
+
+
+	/// <summary>
+	/// マウスが乗っているマスに枠を描く(空きマスのみ)
+	/// </summary>
+	/// <param name="arg_mx">マウスのX座標</param>
+	/// <param name="arg_my">マウスのY座標</param>
+	/// <param name="arg_color">枠の色</param>
+	void DrawCursor(int arg_mx, int arg_my, unsigned int arg_color)
+	{
+		// 盤の外なら何もしない
+		if (arg_mx < pos_x || arg_my < pos_y) return;
+
+		int cell = extend / current_w;           // 1マスの大きさ
+		int col = (arg_mx - pos_x) / cell;
+		int row = (arg_my - pos_y) / cell;
+
+		if (col >= current_w || row >= current_h) return;
+
+		// すでに駒があるマスには出さない
+		if (board_size[row][col] != 0) return;
+
+		int x = pos_x + col * cell;
+		int y = pos_y + row * cell;
+
+		// 薄く塗る
+		SetDrawBlendMode(DX_BLENDMODE_ALPHA, 80);
+		DrawBox(x, y, x + cell, y + cell, arg_color, TRUE);
+		SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
+
+		// 枠線(3pxの太さ)
+		for (int i = 0; i < 3; i++)
+		{
+			DrawBox(x + i, y + i, x + cell - i, y + cell - i, arg_color, FALSE);
+		}
+	}
+
+
 };
