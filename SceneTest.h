@@ -48,6 +48,10 @@ class SceneTest : public SceneBase
 	//	マウス
 	Mouse mouse;
 
+	//	プレイヤーボタン
+	UI playerBottan;
+	UI playerBottan2;
+
 	//	うい
 	UI ui;
 	UI ui2;

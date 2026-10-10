@@ -54,8 +54,14 @@ void SceneTest::Init()
 	//背景画像
 	this->bg0 = Background("kokuban.png",0,0);
 
+	turn.Reset();
+
 	// マウス状態をリセット
 	this->mouse.Reset();
+
+	//	プレイヤー判別ボタン
+	playerBottan = UI("player_botan.png", -50, 0);
+	playerBottan2 = UI("player2_botan.png",1050, 0);
 }
 
 /// <summary>
@@ -326,6 +332,9 @@ void SceneTest::Draw()
 			line_h[i].Draw();
 		}
 	}
+
+	playerBottan.Draw();
+	playerBottan2.Draw();
 
 	if (!check.draw) {
 		//	丸と×の描画（3×3）
