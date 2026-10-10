@@ -49,16 +49,6 @@ void SceneOp::Update()
 	int mx = mouse.GetX();
 	int my = mouse.GetY();
 
-	/*mascot.SetPos(0, 500);
-	mascot2.SetPos(1000, 800);*/
-
-	mascot2.Move(0,-2);
-	if (mascot2.GetY() > 500)
-	{
-		mascot2.GetY() == 500;
-	}
-
-
 	//	マウスと画像（スタート、ルールボタン）のあたり判定を毎フレーム読む
 	//	画像縮小に必要
 	StartBotan.HitImg(mx, my);
@@ -88,6 +78,68 @@ void SceneOp::Update()
 			return;
 		}
 	}
+
+	
+	// フェーズ1：それぞれの位置まで移動
+	if (UI_timer == 0)
+	{
+		if (mascot2.GetY() > 500 || mascot.GetY() < 800)
+		{
+			mascot.Move(0, 20);
+			mascot2.Move(0, -20);
+		}
+		else
+		{
+			UI_timer = 1;
+		}
+	}
+
+	// フェーズ2：停止して120フレーム待つ
+	else if (UI_timer >= 1 && UI_timer <= 120)
+	{
+		mascot.Move(0, 0);
+		mascot2.Move(0, 0);
+
+		UI_timer++;
+
+		if (UI_timer > 120)
+		{
+			UI_timer = 121;
+		}
+	}
+
+	// フェーズ3：反対方向へ移動
+	else if (UI_timer == 121)
+	{
+		if (mascot2.GetY() < 800 || mascot.GetY() > 500)
+		{
+			mascot.Move(0, -20);
+			mascot2.Move(0, 20);
+		}
+		else
+		{
+			UI_timer = 122;
+		}
+	}
+
+	// フェーズ4：停止して120フレーム待ち、最初に戻る
+	else if (UI_timer >= 122)
+	{
+		mascot.Move(0, 0);
+		mascot2.Move(0, 0);
+
+		UI_timer++;
+
+		if (UI_timer >= 242)
+		{
+			UI_timer = 0;
+		}
+	}
+
+
+	
+
+
 }
 
 void SceneOp::Draw()
