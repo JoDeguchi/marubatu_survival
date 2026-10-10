@@ -10,7 +10,10 @@ void SceneOp::Init()
 	mascot2		= UI("aikon2.png", 1000, 500);				//  マスコットキャラ２
 	title		= UI("tytle.png", 150, -20);				//	タイトル名
 	StartBotan  = UI("StartBotan.png", 450, 400);			//	スタートボタン
-	RuleBotan	= UI("RuleBotan.png", 550, 600);			//	ルールボタン
+	RuleBotan	= UI("RuleBotan.png", 550, 600);	//	ルールボタン
+
+	// SE読み込み
+	se_click = LoadSoundMem("decision_1.mp3");
 
 	// マウス状態をリセット
 	mouse.Reset();
@@ -38,6 +41,7 @@ void SceneOp::Update()
 	{
 		if (StartBotan.HitImg(mx, my))
 		{
+			PlaySoundMem(se_click, DX_PLAYTYPE_BACK);
 			game_ptr->ChageScene(1);	//	ゲームシーンへ
 			return;
 		}
@@ -49,6 +53,7 @@ void SceneOp::Update()
 	{
 		if (RuleBotan.HitImg(mx, my))
 		{
+			PlaySoundMem(se_click, DX_PLAYTYPE_BACK);
 			game_ptr->ChageScene(3);	//	ルール説明シーンへ
 			return;
 		}

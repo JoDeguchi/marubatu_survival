@@ -29,6 +29,8 @@ class SceneOp : public SceneBase
 	//	マウスのインスタンス
 	Mouse mouse;
 
+	int se_click;
+
 public:
 	/// <summary>
 	/// コンストラクター

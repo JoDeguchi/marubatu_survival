@@ -10,6 +10,10 @@ void Rule::Init()
 	this->mascot.Load_image("aikon.png");
 	this->mascot2.Load_image("aikon2.png");
 
+
+	// SE読み込み
+	se_click = LoadSoundMem("decision_1.mp3");
+
 	// マウス状態をリセット
 	this->mouse.Reset();
 }
@@ -33,6 +37,7 @@ void Rule::Update()
 		if (x >= 1000 && x <= 1100 &&
 			y >= 600 && y <= 625)
 		{
+			PlaySoundMem(se_click, DX_PLAYTYPE_BACK);
 			this->game_ptr->ChageScene(0);
 			return;
 		}
