@@ -2,6 +2,7 @@
 #include "DxLib.h"
 
 int SceneOp::bgm_title = -1;
+int SceneOp::se_mascot = -1;
 
 void SceneOp::Init()
 {   
@@ -17,6 +18,11 @@ void SceneOp::Init()
 	// SE読み込み
 	se_click = LoadSoundMem("decision_1.mp3");
 
+	// マスコットSE読み込み
+	if (se_mascot == -1)
+	{
+		se_mascot = LoadSoundMem("pyopyo.mp3");   // 実際のファイル名に
+	}
 
 	// BGM読み込み
 	if (bgm_title == -1) {
@@ -65,6 +71,12 @@ void SceneOp::Update()
 			game_ptr->ChageScene(1);	//	ゲームシーンへ
 			return;
 		}
+
+		// マスコットをクリック
+		if (mascot.HitImg(mx, my) || mascot2.HitImg(mx, my))
+		{
+			PlaySoundMem(se_mascot, DX_PLAYTYPE_BACK);
+		}
 	}
 
 	// クリック離された瞬間のみの判定
@@ -78,6 +90,9 @@ void SceneOp::Update()
 			return;
 		}
 	}
+	
+	
+
 
 	
 	// フェーズ1：それぞれの位置まで移動

@@ -34,6 +34,8 @@ class SceneOp : public SceneBase
 
 	//BGMのハンドル
 	static int bgm_title;
+	// マスコット用SEのハンドル
+	static int se_mascot;
 
 	//	ひよこ止める
 	int UI_timer = 0;
