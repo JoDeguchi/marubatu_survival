@@ -1,6 +1,8 @@
 ﻿#include "SceneOp.h"
 #include "DxLib.h"
 
+int SceneOp::bgm_title = -1;
+
 void SceneOp::Init()
 {   
 	// 背景画像
@@ -14,6 +16,21 @@ void SceneOp::Init()
 
 	// SE読み込み
 	se_click = LoadSoundMem("decision_1.mp3");
+
+
+	// BGM読み込み
+	if (bgm_title == -1) {
+
+		bgm_title = LoadSoundMem("BGM1.mp3");
+		ChangeVolumeSoundMem(150, bgm_title);               // BGMはSEより小さめが聞きやすい
+		//PlaySoundMem(bgm_title, DX_PLAYTYPE_LOOP);          // ループ再生
+	}
+
+	// 鳴っていない時だけ再生
+	if (CheckSoundMem(bgm_title) == 0)
+	{
+		PlaySoundMem(bgm_title, DX_PLAYTYPE_LOOP);
+	}
 
 	// マウス状態をリセット
 	mouse.Reset();
@@ -42,6 +59,7 @@ void SceneOp::Update()
 		if (StartBotan.HitImg(mx, my))
 		{
 			PlaySoundMem(se_click, DX_PLAYTYPE_BACK);
+			/*StopSoundMem(bgm_title);*/     // BGM停止
 			game_ptr->ChageScene(1);	//	ゲームシーンへ
 			return;
 		}

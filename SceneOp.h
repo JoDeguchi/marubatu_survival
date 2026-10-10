@@ -29,7 +29,11 @@ class SceneOp : public SceneBase
 	//	マウスのインスタンス
 	Mouse mouse;
 
+	//SEのハンドル
 	int se_click;
+
+	//BGMのハンドル
+	static int bgm_title;
 
 public:
 	/// <summary>
@@ -40,6 +44,8 @@ public:
 	{
 		// Gameインスタンスのポインターを保持
 		this->game_ptr = arg_game_ptr;
+		se_click = -1;    // 未読み込み
+		bgm_title = -1;
 	}
 
 	/// <summary>
