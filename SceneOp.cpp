@@ -9,7 +9,7 @@ void SceneOp::Init()
 	bg = Background("background.png", 0, 0);
 	//	UI画像 (画像と座標)の初期値
 	mascot		= UI("aikon.png", 0, 500);					//  マスコットキャラ
-	mascot2		= UI("aikon2.png", 1000, 500);				//  マスコットキャラ２
+	mascot2		= UI("aikon2.png", 1000, 800);				//  マスコットキャラ２
 	title		= UI("tytle.png", 150, -20);				//	タイトル名
 	StartBotan  = UI("StartBotan.png", 450, 400);			//	スタートボタン
 	RuleBotan	= UI("RuleBotan.png", 550, 600);	//	ルールボタン
@@ -34,6 +34,8 @@ void SceneOp::Init()
 
 	// マウス状態をリセット
 	mouse.Reset();
+
+	
 }
 
 void SceneOp::Input()
@@ -46,6 +48,16 @@ void SceneOp::Update()
 	// マウス座標取得
 	int mx = mouse.GetX();
 	int my = mouse.GetY();
+
+	/*mascot.SetPos(0, 500);
+	mascot2.SetPos(1000, 800);*/
+
+	mascot2.Move(0,-2);
+	if (mascot2.GetY() > 500)
+	{
+		mascot2.GetY() == 500;
+	}
+
 
 	//	マウスと画像（スタート、ルールボタン）のあたり判定を毎フレーム読む
 	//	画像縮小に必要

@@ -16,6 +16,9 @@ void Rule::Init()
 
 	// マウス状態をリセット
 	this->mouse.Reset();
+
+	rule = UI("rule2.png", -100, -50);
+	
 }
 
 void Rule::Input()
@@ -34,8 +37,8 @@ void Rule::Update()
 		int y = this->mouse.GetY();
 
 		// 戻るボタン
-		if (x >= 1000 && x <= 1100 &&
-			y >= 600 && y <= 625)
+		if (x >= 1300 && x <= 1500 &&
+			y >= 800 && y <= 855)
 		{
 			PlaySoundMem(se_click, DX_PLAYTYPE_BACK);
 			this->game_ptr->ChageScene(0);
@@ -53,30 +56,20 @@ void Rule::Draw()
 	int mouseX = this->mouse.GetX();
 	int mouseY = this->mouse.GetY();
 
-	// タイトル
-	SetFontSize(64);
-	DrawString(400, 50, "あそびかた", GetColor(255, 255, 255));
+	
+	rule.Draw();
 
-	//// マスコットキャラを描画
-	//DrawGraph(0, 500, this->mascot.GetImageHandle(), TRUE);
-	//DrawGraph(1000, 500, this->mascot2.GetImageHandle(), TRUE);
-
-	// ルール説明テキスト
-	SetFontSize(32);
-	DrawString(100, 150, "ゲームのルール", GetColor(255, 255, 255));
-	DrawString(100, 200, "・3×3のマスにて〇と×を交互に置きます", GetColor(255, 255, 255));
-	DrawString(100, 240, "・先に自分の記号を3つそろえたら勝ちです", GetColor(255, 255, 255));
-	DrawString(100, 280, "・全てのマスが埋まったら引き分けです", GetColor(255, 255, 255));
-	DrawString(100, 320, "・引き分けの場合5Ｘ5に切り替わります", GetColor(255, 255, 255));
-	DrawString(100, 360, "・切り替わり後4マスそろえたほうが勝ちです", GetColor(255, 255, 255));
+	SetDrawBlendMode(DX_BLENDMODE_ALPHA, 120);
+	DrawFillBox(1200, 770, 1600, 900, GetColor(0, 0, 0));
+	SetDrawBlendMode(DX_BLENDMODE_NOBLEND, 0);
 
 	// 戻るボタン
-	SetFontSize(25);
+	SetFontSize(60);
 	int button_color = GetColor(255, 255, 255);
-	if (mouseX >= 1000 && mouseX <= 1100 &&
-		mouseY >= 600 && mouseY <= 625)
+	if (mouseX >= 1300 && mouseX <= 1500 &&
+		mouseY >= 800 && mouseY <= 850)
 	{
 		button_color = GetColor(255, 255, 0);
 	}
-	DrawString(1000, 600, "戻る", button_color);
+	DrawString(1300, 800, "戻る", button_color);
 }

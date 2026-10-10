@@ -20,6 +20,7 @@ public:
 		Load_image(arg_file_path);
 		SetPos(arg_x, arg_y);
 	}
+	
 
 	//	ゲッター関数Y
 	//	紙吹雪用

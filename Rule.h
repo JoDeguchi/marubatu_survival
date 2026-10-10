@@ -5,6 +5,7 @@
 #include "Background.h"
 #include "KeyReader.h"
 #include "Mouse.h"
+#include "UI.h"
 
 /// <summary>
 /// ルール説明画面（シーン）
@@ -30,6 +31,8 @@ class Rule : public SceneBase
 
 	// マウスのインスタンス
 	Mouse mouse;
+
+	UI rule;
 
 	int se_click;
 

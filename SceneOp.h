@@ -35,6 +35,8 @@ class SceneOp : public SceneBase
 	//BGMのハンドル
 	static int bgm_title;
 
+	int UI_timer = 0;
+
 public:
 	/// <summary>
 	/// コンストラクター
