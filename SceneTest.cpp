@@ -426,11 +426,22 @@ void SceneTest::Draw()
 		}
 
 		// count が偶数なら丸の番、奇数なら×の番
-		if (count % 2 == 0) {
-			DrawString(600, 150, "今は丸の番です", GetColor(255, 255, 0));
-		}
-		else {
-			DrawString(600, 150, "今は×の番です", GetColor(255, 255, 0));
+		SetFontSize(60);
+		// グローバル変数などで宣言
+		int blink_count = 0;
+
+		// 毎フレーム更新
+		blink_count++;
+
+		// 点滅処理
+		if ((blink_count / 30) % 2 == 0)
+		{
+			if (count % 2 == 0) {
+				DrawString(600, 150, "〇のターン", GetColor(255, 20, 100));
+			}
+			else {
+				DrawString(600, 150, "×のターン", GetColor(0, 255, 255));
+			}
 		}
 	}
 }
